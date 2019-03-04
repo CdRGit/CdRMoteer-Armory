@@ -1,0 +1,54 @@
+ID = cdrmoteer.armory
+Name = "CdRMoteer's Armory"
+Version = 0.0.1
+CompatibleGameVersions = ["0.14.5","0.14.6"]
+ModifiesMultiplayer = true
+Author = "CdRMoteer"
+Description = "This mod adds weapons, defenses and other items!"
+StringsFolder = "strings"
+Actions
+[
+	// Ammo
+	{
+		Action = AddMany
+		AddTo = "<ammo/ammo.txt>/Ammo"
+		ManyToAdd = &<ammo/ammo.txt>/Ammos
+	}
+	// Parts
+	{
+		Action = AddMany
+		AddTo = "<ships/terran/terran.txt>/Terran/Parts"
+		ManyToAdd = &<parts/parts.txt>/Parts
+	}
+	// Editor Groups
+	{
+		Action = Overrides
+		OverrideIn = "<gui/game/designer/editor_groups.txt>"
+		Overrides = &<gui/editor_groups.txt>
+	
+	}
+	// Triggers
+	{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_triggers.txt>/PartTriggers"
+		ManyToAdd = &<gui/buttons.txt>/Triggers
+	}
+	// Toggles
+	{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_toggles.txt>/PartToggles"
+		ManyToAdd = &<gui/buttons.txt>/Toggles
+	}
+	// Add Targetable to PD shot
+	{
+		Action = Add
+		AddTo = "<shots/pd_shot/pd_shot.txt>/Components"
+		Name = CdRMoteerTargetable
+		ToAdd
+		{
+			Type = Targetable
+			Health = 100
+			TargetCategory = "cdrmoteer_counter_measure"
+		}
+	}
+]
