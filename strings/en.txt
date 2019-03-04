@@ -18,7 +18,7 @@ CdRMoteer
 			
 			SpacetimeLooperSmall = "Small Spacetime Looper"
 			SpacetimeLooperSmallIcon = "Small Looper"
-			SpacetimeLooperDesc = "The <good>Small Spacetime Looper</good> manipulates spacetime to move the ship around, it is great for maneuvering ships.\n\n'Quote' - Name"
+			SpacetimeLooperSmallDesc = "The <good>Small Spacetime Looper</good> manipulates spacetime to move the ship around, it is great for maneuvering ships.\n\n'Quote' - Name"
 		}
 	
 		EditorGroups
