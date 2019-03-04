@@ -55,7 +55,7 @@ Part : /BASE_PART
 		{
 			Type = Graphics
 			Location = [0.5, 0.5]
-			OperationalToggle = PowerToggle
+			OperationalToggle = IsOperational
 			Floor
 			{
 				Layer = "floors"
@@ -86,47 +86,10 @@ Part : /BASE_PART
 							"doodads_on1.png"
 							"doodads_on2.png"
 							"doodads_on3.png"
-							"doodads_on4.png"
-							"doodads_on5.png"
-							"doodads_on6.png"
-							"doodads_on7.png"
-							"doodads_on8.png"
+							"doodads_on2.png"
 						]
 						Size = [1, 1]
-						AnimationInterval = 0.015
-					}
-				]
-			}
-			NonOperationalDoodad
-			{
-				Layer = "doodads_high"
-				DamageLevels
-				[
-					{
-						File = "doodads_off.png"
-						Size = [1, 1]
-					}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"lights1.png"
-							"lights2.png"
-							"lights3.png"
-							"lights4.png"
-							"lights5.png"
-							"lights6.png"
-							"lights7.png"
-							"lights8.png"
-						]
-						Size = [1, 1]
-						AnimationInterval = 0.015
+						AnimationInterval = 0.15
 					}
 				]
 			}
@@ -176,29 +139,13 @@ Part : /BASE_PART
 					{
 						AnimationFiles
 						[
-							"roof_doodads_on1.png"
-							"roof_doodads_on2.png"
-							"roof_doodads_on3.png"
-							"roof_doodads_on4.png"
-							"roof_doodads_on5.png"
-							"roof_doodads_on6.png"
-							"roof_doodads_on7.png"
-							"roof_doodads_on8.png"
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on2.png"
 						]
 						Size = [1, 1]
-						AnimationInterval = 0.015
-					}
-				]
-			}
-			NonOperationalRoofDoodad
-			{
-				Layer = "roof_doodads"
-				DamageLevels
-				[
-					{
-						File = "roof_doodads_off.png"
-						Size = [1, 1]
-						AnimationInterval = 0.015
+						AnimationInterval = 0.15
 					}
 				]
 			}
