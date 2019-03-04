@@ -5,7 +5,6 @@ Parts
 	&<Weapons/hellbringer_cannon_small/hellbringer_cannon_small.txt>/Part
 	
 	// Defenses
-	&<Defenses/anti_counter_measures/anti_counter_measures.txt>/Part
 	
 	// Flight
 	&<Flight/spacetime_looper_small/spacetime_looper_small.txt>/Part
