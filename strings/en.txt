@@ -15,6 +15,10 @@ CdRMoteer
 			BulletClipFactory = "Bullet Clip Factory"
 			BulletClipFactoryIcon = "Clip Factory"
 			BulletClipFactoryDesc = "The <good>Bullet Clip Factory</good> creates a clip with a lot of small bullets, perfect for guns that use small ammunition, like gatling guns!\n\n'Ammo Snek' - Ultra Blast"
+			
+			SpacetimeLooperSmall = "Small Spacetime Looper"
+			SpacetimeLooperSmallIcon = "Small Looper"
+			SpacetimeLooperDesc = "The <good>Small Spacetime Looper</good> manipulates spacetime to move the ship around, it is great for maneuvering ships.\n\n'Quote' - Name"
 		}
 	
 		EditorGroups

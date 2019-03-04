@@ -1,10 +1,10 @@
 Part : /BASE_PART
 {
-	NameKey = "Parts/FtlDrive"
-	IconNameKey = "Parts/FtlDriveIcon"
+	NameKey = "CdRMoteer/Armory/Parts/SpacetimeLooperSmall"
+	IconNameKey = "CdRMoteer/Armory/Parts/SpacetimeLooperSmallIcon"
 	ID = cdrmoteer.armory.spacetime_looper_small
 	EditorGroups = ["Flight","CdRMoteerArmory"]
-	DescriptionKey = "Parts/FtlDriveDesc"
+	DescriptionKey = "CdRMoteer/Armory/Parts/SpacetimeLooperSmallDesc"
 	Cost = 2500
 	Size = [1, 1]
 	SelectionPriority = 0
