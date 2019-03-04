@@ -1,0 +1,381 @@
+Type = Particles
+Def
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = SetRandomCircle
+			LocationIn = location
+			LocationOut = location
+			Name = "Init location"
+			Enabled = true
+			UpdateAfterInit = false
+			Circle
+			{
+				Center
+				{
+					X = 0
+					Y = 0
+				}
+				Radius = 2
+			}
+			Perimeter = false
+		}
+		{
+			Type = SetRandomVelocityFromPoint
+			VelocityIn = base_velocity
+			VelocityOut = velocity
+			Name = "Initial velocity"
+			Enabled = true
+			UpdateAfterInit = false
+			LocationIn = location
+			Speed
+			{
+				Min = 0
+				Max = 20
+			}
+			AwayFromPoint
+			{
+				X = 0
+				Y = 0
+			}
+		}
+		{
+			Type = SetRandom
+			VelocityInOut = inherited_velocity
+			Name = "Initial rotation"
+			Enabled = true
+			UpdateAfterInit = false
+			LocationIn = location
+			LocationOut = location
+			DataOut = rotation
+			ValueType = Angle
+			FromValue = 0d
+			ToValue = 360d
+		}
+		{
+			Type = SetRandom
+			DataOut = rot_velocity
+			ValueType = Angle
+			FromValue = -360d
+			ToValue = 360d
+			Name = "Initial rot velocity"
+			Enabled = true
+			UpdateAfterInit = false
+			VelocityIn = base_velocity
+			VelocityOut = base_velocity
+		}
+		{
+			Type = LocationToWorldSpace
+			SpriteIndexIn = sprite_index
+			UvRectOut = uv_rect
+			TextureSize
+			{
+				X = 256
+				Y = 256
+			}
+			SpriteSize
+			{
+				X = 64
+				Y = 64
+			}
+			SpriteCount = 16
+			SpritesPerRow = 4
+			PixelOffset
+			{
+				X = 0
+				Y = 0
+			}
+			Name = "Convert location to world space."
+			Enabled = true
+			UpdateAfterInit = false
+			VelocityInOut = velocity
+			LocationIn = location
+			LocationOut = location
+		}
+		{
+			Type = VelocityToWorldSpace
+			DataOut = sprite_index
+			ValueType = Int
+			Value
+			{
+				Rf = 0.498039216
+				Gf = 0.498039216
+				Bf = 0.498039216
+				Af = 1
+			}
+			Name = "Convert velocity to world space"
+			Enabled = true
+			UpdateAfterInit = false
+			FromValue = 0
+			ToValue = 15
+			VelocityIn = velocity
+			VelocityOut = velocity
+		}
+		{
+			Type = AddFrameOfReference
+			LocationOut = location
+			Circle
+			{
+				Center
+				{
+					X = 0
+					Y = 0
+				}
+				Radius = 0.5
+			}
+			Perimeter = true
+			Name = "Add frame of reference"
+			Enabled = true
+			UpdateAfterInit = false
+			SpriteIndexIn = sprite_index
+			UvRectOut = uv_rect
+			TextureSize
+			{
+				X = 256
+				Y = 256
+			}
+			SpriteSize
+			{
+				X = 64
+				Y = 64
+			}
+			SpriteCount = 16
+			SpritesPerRow = 4
+			PixelOffset
+			{
+				X = 0
+				Y = 0
+			}
+			VelocityInOut = velocity
+		}
+		{
+			Type = SetRandom
+			LocationIn = location
+			VelocityOut = base_velocity
+			Speed
+			{
+				Min = 0
+				Max = 4
+			}
+			AwayFromPoint
+			{
+				X = 0
+				Y = 0
+			}
+			Name = "Random sprite index"
+			Enabled = true
+			UpdateAfterInit = false
+			ColorOut = color
+			HueRange
+			{
+				Min = 0
+				Max = 0
+			}
+			SaturationRange
+			{
+				Min = 0
+				Max = 0
+			}
+			ValueRange
+			{
+				Min = 0.1
+				Max = 0.3
+			}
+			AlphaRange
+			{
+				Min = 1
+				Max = 1
+			}
+			DataOut = sprite_index
+			ValueType = Int
+			FromValue = 0
+			ToValue = 15
+		}
+		{
+			Type = UvSprites
+			SpriteIndexIn = sprite_index
+			UvRectOut = uv_rect
+			TextureSize
+			{
+				X = 256
+				Y = 256
+			}
+			SpriteSize
+			{
+				X = 64
+				Y = 64
+			}
+			SpriteCount = 16
+			SpritesPerRow = 4
+			PixelOffset
+			{
+				X = 0
+				Y = 0
+			}
+			Name = "Sprite UVs"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandomHsvColor
+			ColorOut = color
+			HueRange
+			{
+				Min = 0
+				Max = 0
+			}
+			SaturationRange
+			{
+				Min = 0
+				Max = 0
+			}
+			ValueRange
+			{
+				Min = 0.1
+				Max = 0.3
+			}
+			AlphaRange
+			{
+				Min = 1
+				Max = 1
+			}
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = life
+			ValueType = Float
+			FromValue = 0
+			ToValue = 0.5
+			Name = "Spent life"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Updaters
+	[
+		{
+			Type = Lifetime
+			LifeInOut = life
+			Lifetime = 0.6
+			Name = Lifetime
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			AIn = location
+			ResultOut = location
+			Operator = AddDt
+			ValueType = Float
+			Value = 1.3
+			Name = "Apply velocity"
+			Enabled = true
+			UpdateAfterInit = false
+			DataType = Vector2D
+			BIn = velocity
+		}
+		{
+			Type = Operator
+			AIn = rotation
+			ResultOut = rotation
+			Operator = AddDt
+			ValueType = Float
+			Value = 1
+			Name = "Apply rot velocity"
+			Enabled = true
+			UpdateAfterInit = false
+			DataType = Float
+			BIn = rot_velocity
+			LerpIn = life
+			DataOut = scale
+			Invert = false
+			FromValue = 1
+			ToValue = 0
+		}
+		{
+			Type = Lerp
+			LerpIn = life
+			DataOut = scale
+			Invert = false
+			ValueType = Float
+			FromValue = 1
+			ToValue = 0
+			Name = "Scale lerp"
+			Enabled = true
+			UpdateAfterInit = true
+		}
+	]
+	Renderer
+	{
+		Type = StandardQuadRenderer
+		LocationIn = location
+		ScaleIn = scale
+		RotationIn = rotation
+		ColorIn = color
+		UvRectIn = uv_rect
+		BaseSize
+		{
+			X = 0.75
+			Y = 0.75
+		}
+		Name = ""
+	}
+	Material
+	{
+		Texture
+		{
+			File = ./Data/common_effects/particles/shrapnel.png
+			MipLevels = max
+			SampleMode = Linear
+		}
+		TargetBlendMode
+		{
+			SourceRgbFactor = SourceAlpha
+			DestRgbFactor = InverseSourceAlpha
+			RgbOperator = Add
+			SourceAlphaFactor = InverseDestAlpha
+			DestAlphaFactor = One
+			AlphaOperator = Add
+			ChannelWriteMask
+			[
+				Red
+				Green
+				Blue
+				Alpha
+				All
+			]
+		}
+	}
+	DeleteMode = KeepOrder
+	EnableMultithreading = false
+	InitCapacity = 2500
+}
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 200
+	PreInitializers[]
+	PostInitializers[]
+}
+Bucket = Lower2
+UseRealTime = false
+PenetratingBucket
+MinIntensity = 0
+IsFancy = true
+Sharing = Global
+UnsharedRenderInWorldSpace = false
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 3
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 15
+ScaleEmissionWithIntensity = true
+ScaleEmissionWithBeamLength = false
+CaptureBackBuffer = false
+Delay = 0
+IgnoreIntensity = false

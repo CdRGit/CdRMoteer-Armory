@@ -1,0 +1,147 @@
+ID = "cdrmoteer.armory.hellbeinger_shot_small"
+Range = 200
+IdealRange = [60, 150]
+IdealRadius = [5, 50]
+Speed = 50
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.15
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 100
+		TargetCategory = "bullet"
+
+		OnDeath
+		{
+			MediaEffects = &~/Components/Hit/HitOperational/MediaEffects
+		}
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 9
+		PenetrationSpeed = 40
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 250
+				}
+				{
+					Type = Impulse
+					Impulse = 20
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_med.txt>
+				&<particles/bullet_smoke_med.txt>
+				&<particles/bullet_flash_med.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .05
+					Duration = .5
+				}
+			]
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 125
+				}
+				{
+					Type = Impulse
+					Impulse = 1
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_struct_med.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "bullet_med_hit_structure.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 100
+				}
+				{
+					Type = Fire
+					FireChance = .125
+				}
+				{
+					Type = Impulse
+					Impulse = 2
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_med.txt>
+				&<particles/bullet_flash_med.txt>
+			]
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffects
+		[
+			&<particles/bullet_trail_med.txt>
+		]
+	}
+}

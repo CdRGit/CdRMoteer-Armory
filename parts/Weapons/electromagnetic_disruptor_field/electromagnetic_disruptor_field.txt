@@ -1,0 +1,428 @@
+Part : /BASE_PART
+{
+	NameKey = "CdRMoteer/Armory/Parts/ElectroMagneticField"
+	IconNameKey = "CdRMoteer/Armory/Parts/ElectroMagneticFieldIcon"
+	ID = cdrmoteer.armory.electromagnetic_disruptor_field
+	OtherIDs = [cdrmoteer.electromagnetic_disruptor_field]
+	EditorGroups = ["WeaponsEnergy","CdRMoteerArmory"]
+	DescriptionKey = "CdRMoteer/Armory/Parts/ElectroMagneticFieldDesc"
+	Cost = 20000
+	AIValue = 50
+	Size = [2, 2]
+	SelectionPriority = 0
+	MaxHealth = 4000
+	IsContiguityOrigin = true
+	TypeCategories = [weapon, uses_power, is_crewed]
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+	]
+	RequiresCategories = []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ChargingStorage, PartCrew]
+			Mode = All
+		}
+		
+		ShouldCharge
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, PartCrew]
+			Mode = All
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		CurrentMode
+		{
+			Type = UIToggle
+			ToggleID = "cdrmoteer_electromagnetic_disruption_mode"
+			Default = 0
+		}
+		
+		ContinuousToggle
+		{
+			Type = ModeToggle
+			Mode = CurrentMode
+			OnMode = 0
+		}
+		
+		PulseToggle
+		{
+			Type = ModeToggle
+			Mode = CurrentMode
+			OnMode = 1
+		}
+		
+		ManualToggle
+		{
+			Type = ModeToggle
+			Mode = CurrentMode
+			OnMode = 2
+		}
+
+		ContinuousComponents
+		{
+			Type = ToggledComponents
+			Toggle = ContinuousToggle
+			Components = &<field_modes/continuous.txt>/Components
+		}
+
+		PulseComponents
+		{
+			Type = ToggledComponents
+			Toggle = PulseToggle
+			Components = &<field_modes/pulse.txt>/Components
+		}
+		
+		ManualComponents
+		{
+			Type = ToggledComponents
+			Toggle = ManualToggle
+			Components = &<field_modes/manual.txt>/Components
+		}
+		
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 2000
+			Priorities = &/PRIORITIES/Weapon_Supply_Important
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 500
+			AmmoDesireToggle = PowerToggle
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		ChargingStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = cdrmoteer_internal
+			MaxAmmo = 100
+			Priorities = {Low = 0, High = 0, Empty = 0}
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 500
+			AmmoDesireToggle = PowerToggle
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		Charger
+		{
+			Type = AmmoConverter
+			OperationalToggle = ShouldCharge
+			FromStorage = BatteryStorage
+			ToStorage = ChargingStorage
+			FromQuantity = 50
+			MinFromQuantityForConversion = 1
+			ToQuantity = 1
+			Interval = 0
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [1, 0.89]
+			Rotation = 180d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			Priorities = &/PRIORITIES/ControlRoom_Crew
+			PrerequisitesBeforeCrewing = [BatteryStorage, PowerToggle]
+			CrewDestinations
+			[
+				[1, 0.89]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_on.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_on_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_on_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_off.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_off_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_off_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_high"
+			AmmoLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries2.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+		}
+
+		ChargingProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = ChargingStorage
+			LowColor = [255, 0, 0]
+			HighColor = [122, 122, 0]
+			FullColor = [0, 255, 0]
+			Height = 10
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+				
+				// Out of power.
+				{
+					Toggle = ChargingStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1.5, 1.5]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1.5, 1.5]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 2]
+		}
+
+		PowerUIStats
+		{
+			Type = UIStats
+			Stat = Power
+			Min = .02
+			Ideal = .02
+		}
+		CrewUIStats
+		{
+			Type = UIStats
+			Stat = Crew
+			Min = 1
+			Ideal = 1
+		}
+	}
+}

@@ -1,0 +1,69 @@
+Components
+{
+	FireTrigger
+	{
+		Type = UITrigger
+		TriggerID = "cdrmoteer_fire_electromagnetic_disruption"
+	}
+		
+	FireEffects
+	{
+		Type = TriggeredEffects
+		Location = [1, 1]
+		Trigger = FireTrigger
+		FactorHitEffectsWith = ChargingStorage
+		HitEffects
+		[
+			{
+				Type = ExplosiveAmmoDrain
+				AmmoType = battery
+				TotalDrain = 50000
+				Radius = 500
+				Slices = 1
+				AllowFriendlyDrain = false
+				DrainsParts = true
+				DrainsShields = true
+				MediaEffectsOnDrainFactor = .00025
+				MediaEffectsOnDrain
+				[
+					&<./Data/shots/electro_bolt/particles/electro_bolt_discharge.txt>
+					&<particles/lightning.txt>
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "./Data/shots/electro_bolt/discharge.wav"
+						Volume = 1
+						SpeedVariation = .2
+					}
+				]
+			}
+			{
+				Type = ExplosiveAmmoDrain
+				AmmoType = battery
+				TotalDrain = 25000
+				Radius = 500
+				Slices = 1
+				AllowFriendlyDrain = true
+				DrainsParts = true
+				DrainsShields = true
+				MediaEffectsOnDrainFactor = .00025
+				MediaEffectsOnDrain
+				[
+					&<./Data/shots/electro_bolt/particles/electro_bolt_discharge.txt>
+					&<particles/lightning.txt>
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "./Data/shots/electro_bolt/discharge.wav"
+						Volume = 1
+						SpeedVariation = .2
+					}
+				]
+			}
+			{
+				Type = AmmoDrain
+				AmmoType = cdrmoteer_internal
+				Amount = 100
+				AllowFriendlyDrain = true
+			}
+		]
+	}
+}

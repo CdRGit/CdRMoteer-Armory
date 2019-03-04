@@ -1,0 +1,13 @@
+CdRMoteerArmory
+{
+	NameKey = "CdRMoteer/Armory/EditorGroups/Armory"
+	Icon
+	{
+		Texture
+		{
+			File = "group_armory.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+}

@@ -1,0 +1,52 @@
+CdRMoteer
+{
+	Armory
+	{
+		Parts
+		{
+			ElectroMagneticField = "Electro-Magnetic Disruption Field"
+			ElectroMagneticFieldIcon = "Disruption Field"
+			ElectroMagneticFieldDesc = "The <good>Electro-Magnetic Disruption Field</good> can drain a lot of energy in an area, however <bad>it also drains from the main ship</bad>. \n\n'Unlimited Pawar' - Tyaestysu"
+			
+			HellbringerSmall = "Small Hellbringer Cannon"
+			HellbringerSmallIcon = "Small Hellbringer"
+			HellbringerSmallDesc = "While the engineers are unsure whether hell actually exists, they all agree that it would be filled with fire, thus they designed the <good>Small Hellbringer Cannon</good> as a fire creating cannon, it uses bullet clips and power \n\n'This is fine' - That one dog"
+			
+			BulletClipFactory = "Bullet Clip Factory"
+			BulletClipFactoryIcon = "Clip Factory"
+			BulletClipFactoryDesc = "The <good>Bullet Clip Factory</good> creates a clip with a lot of small bullets, perfect for guns that use small ammunition, like gatling guns!\n\n'Ammo Snek' - Ultra Blast"
+		}
+	
+		EditorGroups
+		{
+			Armory = "CdRMoteer's Armory"
+		}
+		
+		PartTriggers
+		{
+			FireElectro = "Fire Electro-Magnetic Disruption Field \n\nHotkey: <btn id='PartTriggers.cdrmoteer_fire_electromagnetic_disruption'/>" 
+		}
+		
+		PartToggles
+		{
+			ModeContinuous = "Mode: <good>Continuous</good>"
+			ModePulse = "Mode: <good>Pulse</good>"
+			ModeManual = "Mode: <good>Manual</good>"
+		}
+	}
+}
+
+Inputs
+{
+	PartTriggers
+	{
+		cdrmoteer_fire_electromagnetic_disruption = "Fire Electro-Magnetic Disruption Field"
+	}
+	
+	PartToggles
+	{
+		cdrmoteer_electromagnetic_disruption_mode_continuous = "Disruption Field Mode: Continuous"
+		cdrmoteer_electromagnetic_disruption_mode_pulse = "Disruption Field Mode: Pulse"
+		cdrmoteer_electromagnetic_disruption_mode_manual = "Disruption Field Mode: Manual"
+	}
+}

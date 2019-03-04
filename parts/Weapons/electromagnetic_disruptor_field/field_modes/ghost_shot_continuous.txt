@@ -1,0 +1,82 @@
+ID = "cdrmoteer.armory.ghost_disruptor_shot_continuous"
+Range = 400
+Speed = 0
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.15
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipCollisionDelay = 0
+		HitOperational = HitFriendly
+		HitStructural = HitFriendly
+		HitShield = HitFriendly
+		HitFriendly
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveAmmoDrain
+					AmmoType = battery
+					TotalDrain = 5000
+					Radius = 500
+					Slices = 1
+					AllowFriendlyDrain = false
+					DrainsParts = true
+					DrainsShields = true
+
+					MediaEffectsOnDrainFactor = .00025
+					MediaEffectsOnDrain
+					[
+						&<./Data/shots/electro_bolt/particles/electro_bolt_discharge.txt>
+						&<particles/lightning.txt>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "./Data/shots/electro_bolt/discharge.wav"
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+				{
+					Type = ExplosiveAmmoDrain
+					AmmoType = battery
+					TotalDrain = 2500
+					Radius = 500
+					Slices = 1
+					AllowFriendlyDrain = true
+					DrainsParts = true
+					DrainsShields = true
+
+					MediaEffectsOnDrainFactor = .00025
+					MediaEffectsOnDrain
+					[
+						&<./Data/shots/electro_bolt/particles/electro_bolt_discharge.txt>
+						&<particles/lightning.txt>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "./Data/shots/electro_bolt/discharge.wav"
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+			]
+		}
+	}
+}

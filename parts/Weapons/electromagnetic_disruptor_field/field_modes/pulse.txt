@@ -1,0 +1,58 @@
+Components
+{
+	Weapon
+	{
+		Type = TurretWeapon // This has an arc of 0, but we don't want to use FixedWeapon because that will only shoot at things directly in the LOS.
+		Location = [1, 1]
+		Rotation = -90d
+		Emitter = Emitter
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		FireInterval = 0.5
+		FiringArc = 360d
+		ValidArc = 90d
+		FireThresholdAngle = 45d
+		RotateSpeed = 720d
+		AllowFireWithBlockedLOS = true
+		AIFirepowerRating = 3200
+		AllowFireToggle = ChargingStorage
+
+		AutoTargets
+		[
+			{
+				TargetType = ShipParts
+				Toggle = FireModeToggle
+			}
+		]
+
+		BlueprintArcSprite
+		{
+			Texture = &/INDICATORS/WeaponArc
+			Size = [0, 1.5]
+			Color = [255, 0, 0, 63]
+		}
+		BlueprintArcRadius = 10
+		BlueprintArcSpriteSegments = 64
+		
+		CoverageSectorArc
+		{
+			Texture = &/INDICATORS/VerticalGradient
+			VertexColor = [255, 255, 255, 51]
+			QuadCount = 64
+		}
+	}
+
+	Emitter
+	{
+		Type = BulletEmitter
+		ChainedTo = Weapon
+		OperationalToggle = IsOperational
+		FireTrigger = Weapon
+		GetTargetFrom = Weapon
+		AmmoStorage = ChargingStorage
+		Location = [0,0]
+		AmmoUsed = 25
+		Bullet = &<ghost_shot_pulse.txt>
+		TargetLeadPrediction = false
+	}
+}

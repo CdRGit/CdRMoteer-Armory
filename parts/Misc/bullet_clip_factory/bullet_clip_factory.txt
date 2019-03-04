@@ -1,0 +1,364 @@
+Part : /BASE_PART
+{
+	NameKey = "CdrMoteer/Armory/Parts/BulletClipFactory"
+	IconNameKey = "CdrMoteer/Armory/Parts/BulletClipFactoryIcon"
+	ID = cdrmoteer.bullet_clip_factory
+	EditorGroups = ["WeaponsProjectile","CdRMoteerArmory"]
+	DescriptionKey = "CdrMoteer/Armory/Parts/BulletClipFactoryDesc"
+	Cost = 5000
+	AIValue = 20
+	Size = [2, 2]
+	SelectionPriority = 1
+	MaxHealth = 4000
+	TypeCategories = [provides_bullet_clips, uses_power]
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+		[0, 2]
+		[1, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+		}
+
+		ClipStorage
+		{
+			Type = AmmoStorage
+			AmmoType = cdrmoteer_bullet_clip
+			MaxAmmo = 10
+			SuppliesAmmo = true
+			AssumeAlwaysHasAmmoWhenToggle = IsOperational
+			WaitPerDistToNextClosest = .075
+		}
+
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 2000
+			Priorities = &/PRIORITIES/Factory_Supply
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 500
+			AmmoDesireToggle = PowerToggle
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		AmmoConverter
+		{
+			Type = AmmoConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			ToStorage = ClipStorage
+			FromQuantity = 80
+			MinFromQuantityForConversion = 1
+			ToQuantity = 10
+			Interval = 2
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = AmmoConverter
+			Location = [1, 1]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "bullet_create.wav"
+					Volume = .075
+					SpeedVariation = .1
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			AnimationToggle = AmmoConverter
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+							"doodads_on9.png"
+							"doodads_on10.png"
+							"doodads_on11.png"
+							"doodads_on12.png"
+							"doodads_on13.png"
+							"doodads_on14.png"
+							"doodads_on15.png"
+							"doodads_on16.png"
+							"doodads_on17.png"
+							"doodads_on18.png"
+							"doodads_on19.png"
+							"doodads_on20.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalRoofWindows = &OperationalRoofWindows
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries2.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		ClipSprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "clip.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+
+			FactorHitEffectsWith = ClipStorage
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 25000
+					Radius = 4
+					Delay = .05
+					DamagesOperationalHealth = true
+					DamagesStructuralHealth = false
+					AllowFriendlyDamage = true
+					FireChancePerNDamage = 50%
+					NDamage = 1000
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 5000
+					Radius = 3
+					Delay = .05
+					DamagesOperationalHealth = false
+					DamagesStructuralHealth = true
+					AllowFriendlyDamage = true
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1.5, 1.5]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 2]
+		}
+
+		PowerUIStats
+		{
+			Type = UIStats
+			Stat = Power
+			Min = .4
+			Ideal = .8
+		}
+		CrewUIStats
+		{
+			Type = UIStats
+			Stat = Crew
+			Min = .25
+			Ideal = .5
+		}
+	}
+}

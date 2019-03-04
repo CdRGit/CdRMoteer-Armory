@@ -1,0 +1,76 @@
+Triggers
+[
+	// Fire Electro-Magnetic Disruption Field
+	{
+		TriggerID = "cdrmoteer_fire_electromagnetic_disruption"
+		DefaultHotkey = [PlatformCmdCtrl, X]
+		ButtonToolTipKey = "CdRMoteer/Armory/PartTriggers/FireElectro"
+		ShowWithShipCommands = true
+		ButtonSprite
+		{
+			Texture
+			{
+				File = "trigger_fire.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+]
+
+Toggles
+[
+	// Electro-Magnetic Disruption Field Mode
+	{
+		ToggleID = "cdrmoteer_electromagnetic_disruption_mode"
+		Style = Popout
+		ShowWithShipCommands = true
+		Choices
+		[
+			// Continous
+			{
+				ChoiceID = "cdrmoteer_electromagnetic_disruption_mode_continuous"
+				ButtonToolTipKey = "CdRMoteer/Armory/PartToggles/ModeContinuous"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "mode_continuous.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Pulse.
+			{
+				ChoiceID = "cdrmoteer_electromagnetic_disruption_mode_pulse"
+				ButtonToolTipKey = "CdRMoteer/Armory/PartToggles/ModePulse"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "mode_pulse.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Manual.
+			{
+				ChoiceID = "cdrmoteer_electromagnetic_disruption_mode_manual"
+				ButtonToolTipKey = "CdRMoteer/Armory/PartToggles/ModeManual"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "mode_manual.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+]

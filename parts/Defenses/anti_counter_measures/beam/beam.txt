@@ -1,0 +1,45 @@
+Range = 400
+IdealRange = 90
+ClipRangeToTarget = true
+PenetratesStructure = false
+RandomOffsetRadius = [1, 5] // Increases as range increases.
+
+HitNothing
+{
+	HitEffects
+	[
+		{
+			Type = ExplosiveDamage
+			TotalDamage = 10000
+			Radius = 10
+            Slices = 1
+			DamagesShips = false
+			DamagesShields = false
+			DamagesBullets = true
+			DamagesBulletCategories = [cdrmoteer_counter_measure]
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/flak_large_shrapnel.txt>
+		&<particles/flak_large_flash.txt>
+		&<particles/flak_large_smoke.txt>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "beam.wav"
+			Volume = .5
+		}
+
+		: /BASE_SHAKE
+		{
+			ShakeAmount = .05
+			Duration = .25
+		}
+	]
+}
+
+HitShield = &HitNothing
+HitOperational = &HitNothing
+HitStructural = &HitNothing

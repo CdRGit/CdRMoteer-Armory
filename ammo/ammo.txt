@@ -1,0 +1,29 @@
+Ammos
+[
+	{
+		ID = cdrmoteer_internal
+		MaxCarried = 0
+		CarriesMultiple = 0
+		CarriedSprite
+		{
+			AnimationFiles
+			[
+				"battery1.png"
+			]
+			AnimationInterval = 0.15
+			Size = [1, 1]
+			Offset = [0, .25]
+		}
+	}
+	{
+		ID = cdrmoteer_bullet_clip
+		MaxCarried = 10
+		CarriesMultiple = 10
+		CarriedSprite
+		{
+			File = "clip.png"
+			Size = [1, 1]
+			Offset = [0, .25]
+		}
+	}
+]
