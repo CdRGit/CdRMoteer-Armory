@@ -227,27 +227,10 @@ Part : /BASE_PART
 			ActivationIncreaseTime = 0
 			ActivationRecoveryTime = 0
 			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = 110
+			FuelUsagePerSecond = 50
 		}
 
 		LeftThruster
-		{
-			Type = Thruster
-			Location = [0.5, 0.5]// Relative to upper-left corner of unrotated part.
-			Rotation = 0d// Relative to unrotated part.
-			OperationalToggle = IsOperational
-			Force = 100
-			MinActivation = 0
-			MaxActivation = 1
-			MinUncommandedActivation = 0
-			MaxUncommandedActivation = 1
-			ActivationIncreaseTime = 0
-			ActivationRecoveryTime = 0
-			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = 100
-		}
-
-		RightThruster
 		{
 			Type = Thruster
 			Location = [0.5, 0.5]// Relative to upper-left corner of unrotated part.
@@ -261,7 +244,24 @@ Part : /BASE_PART
 			ActivationIncreaseTime = 0
 			ActivationRecoveryTime = 0
 			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = 100
+			FuelUsagePerSecond = 40
+		}
+
+		RightThruster
+		{
+			Type = Thruster
+			Location = [0.5, 0.5]// Relative to upper-left corner of unrotated part.
+			Rotation = 0d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = 100
+			MinActivation = 0
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 1
+			ActivationIncreaseTime = 0
+			ActivationRecoveryTime = 0
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = 40
 		}
 
 		ReverseThruster
@@ -278,7 +278,7 @@ Part : /BASE_PART
 			ActivationIncreaseTime = 0
 			ActivationRecoveryTime = 0
 			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = 100
+			FuelUsagePerSecond = 40
 		}
 
 		OperationEffects
@@ -337,15 +337,15 @@ Part : /BASE_PART
 		{
 			Type = UIStats
 			Stat = Power
-			Min = 1
-			Ideal = 1
+			Min = .04
+			Ideal = .08
 		}
 		CrewUIStats
 		{
 			Type = UIStats
 			Stat = Crew
-			Min = 0
-			Ideal = 2
+			Min = .25
+			Ideal = .5
 		}
 	}
 }
