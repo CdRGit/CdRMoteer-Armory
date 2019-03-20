@@ -30,10 +30,6 @@ Part : /BASE_PART
 		[-1, 1]
 		[2, 1]
 	]
-	BlockedTravelCells
-	[
-		[1, 2]
-	]
 	EditorIcon
 	{
 		Texture
