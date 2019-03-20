@@ -1,10 +1,10 @@
 Part : /BASE_PART
 {
 	NameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabin"
-	IconNameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabin"
+	IconNameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabinIcon"
 	ID = cdrmoteer.armory.luxurious_crew_cabin
 	EditorGroups = ["Crew", "CdRMoteerArmory"]
-	DescriptionKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabin"
+	DescriptionKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabinDesc"
 	Cost = 1000
 	Size = [2, 3]
 	SelectionTypeID = "quarters"
