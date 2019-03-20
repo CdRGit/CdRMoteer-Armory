@@ -22,7 +22,7 @@ CdRMoteer
 			
 			LuxuriousCrewCabin = "Luxurious Crew Cabin"
 			LuxuriousCrewCabinIcon = "Deluxe Crew Cabin"
-			LuxuriousCrewCabinDesc = "The <good>Luxurious Crew Cabin</good> has beds for 6, and a desk for 1.\nNoone knows what he is writing.\n\n'Dank memeing' - ! ℋɵɭσℳλ☦Ϊ∁ [lvl420 ship fixer]"
+			LuxuriousCrewCabinDesc = "The <good>Luxurious Crew Cabin</good> has beds for 6, and a desk for 1.\nNoone knows what he is writing.\n\n'Dank memeing' - ! ℋɵɭσℳλ☦Ϊ∁"
 		}
 	
 		EditorGroups
