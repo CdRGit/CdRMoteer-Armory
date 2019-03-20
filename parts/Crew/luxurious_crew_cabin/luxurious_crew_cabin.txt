@@ -14,12 +14,21 @@ Part : /BASE_PART
 	IgnoreRotationForMirroredSelection = false
 	CrewSpawnLocations
 	[
-		[.5, .5]
-		[1.5, .5]
-		[2.5, .5]
-		[.5, 1.5]
-		[1.5, 1.5]
-		[2.5, 1.5]
+		[1, 1]
+		[1, 1]
+		[1, 1]
+		[1, 1]
+		[1, 1]
+		[1, 1]
+	]
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[1, -1]
+		[-1, 0]
+		[2, 0]
+		[-1, 1]
+		[2, 1]
 	]
 	EditorIcon
 	{
