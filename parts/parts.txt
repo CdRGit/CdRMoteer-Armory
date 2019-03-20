@@ -9,6 +9,9 @@ Parts
 	// Flight
 	&<Flight/spacetime_looper_small/spacetime_looper_small.txt>/Part
 	
+	// Crew
+	&<Crew/luxurious_crew_cabin/luxurious_crew_cabin.txt>/Part
+	
 	// Misc
 	&<Misc/bullet_clip_factory/bullet_clip_factory.txt>/Part
 ]

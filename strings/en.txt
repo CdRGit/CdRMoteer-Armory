@@ -19,6 +19,10 @@ CdRMoteer
 			SpacetimeLooperSmall = "Small Spacetime Looper"
 			SpacetimeLooperSmallIcon = "Small Looper"
 			SpacetimeLooperSmallDesc = "The <good>Small Spacetime Looper</good> manipulates spacetime to move the ship around, it is great for maneuvering ships.\n\n'I have no idea why it works, it just does' - Engineer"
+			
+			LuxuriousCrewCabin = "Luxurious Crew Cabin"
+			LuxuriousCrewCabinIcon = "Deluxe Crew Cabin"
+			LuxuriousCrewCabinDesc = "The <good>Luxurious Crew Cabin</good> has beds for 5 crew members and a viewing spot for 1 crew member."
 		}
 	
 		EditorGroups

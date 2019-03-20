@@ -1,0 +1,145 @@
+Part : /BASE_PART
+{
+	NameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabin"
+	IconNameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabin"
+	ID = cdrmoteer.armory.luxurious_crew_cabin
+	EditorGroups = ["Crew", "CdRMoteerArmory"]
+	DescriptionKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabin"
+	Cost = 1000
+	Size = [2, 3]
+	SelectionTypeID = "quarters"
+	MaxHealth = 6000
+	TypeCategories = [provides_crew]
+	CrewCapacity = 6
+	IgnoreRotationForMirroredSelection = false
+	CrewSpawnLocations
+	[
+		[.5, .5]
+		[1, .5]
+		[1.5, .5]
+		[.5, 1.5]
+		[1, 1.5]
+		[1.5, 1.5]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		CrewIdler
+		{
+			Type = CrewIdler
+			MaxCrew = 5
+			Buffer = .25
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_windows_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_windows_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
+			Location = [1, 1.5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 3]
+		}
+
+		CrewUIStats
+		{
+			Type = UIStats
+			Stat = Crew
+			Provided = 6
+		}
+	}
+}
