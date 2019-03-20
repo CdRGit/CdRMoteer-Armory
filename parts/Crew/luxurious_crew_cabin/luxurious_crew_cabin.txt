@@ -15,11 +15,11 @@ Part : /BASE_PART
 	CrewSpawnLocations
 	[
 		[.5, .5]
-		[1, .5]
 		[1.5, .5]
+		[2.5, .5]
 		[.5, 1.5]
-		[1, 1.5]
 		[1.5, 1.5]
+		[2.5, 1.5]
 	]
 	EditorIcon
 	{
@@ -28,14 +28,14 @@ Part : /BASE_PART
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [64, 64]
+		Size = [46, 69]
 	}
 	Components : ^/0/Components
 	{
 		CrewIdler
 		{
 			Type = CrewIdler
-			MaxCrew = 5
+			MaxCrew = 6
 			Buffer = .25
 		}
 
