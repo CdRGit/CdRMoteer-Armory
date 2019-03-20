@@ -44,7 +44,7 @@ Part : /BASE_PART
 		CrewIdler
 		{
 			Type = CrewIdler
-			MaxCrew = 6
+			MaxCrew = 5
 			Buffer = .25
 		}
 
