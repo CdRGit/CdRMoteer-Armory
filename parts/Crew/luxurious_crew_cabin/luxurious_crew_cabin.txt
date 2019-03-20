@@ -30,6 +30,10 @@ Part : /BASE_PART
 		[-1, 1]
 		[2, 1]
 	]
+	BlockedTravelCells
+	[
+		[1, 2]
+	]
 	EditorIcon
 	{
 		Texture
@@ -128,17 +132,38 @@ Part : /BASE_PART
 					}
 				]
 			}
-			OperationalDoodads
+			OperationalDoodad
 			{
 				Layer = "doodads_low"
 				DamageLevels
 				[
-					(
+					{
 						File = "desk.png"
 						Size = [2, 3]
-					)
+					}
 				]
 			}
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [0.90, 2.5]
+			Rotation = 270d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			Priorities = &/PRIORITIES/Utility_Crew
+			CrewDestinations
+			[
+				[0.75, 2.5]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
 		}
 
 		DestroyedEffects
