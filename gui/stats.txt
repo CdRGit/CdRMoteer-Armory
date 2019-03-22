@@ -1,0 +1,11 @@
+Stats
+[
+	{
+		ID = PowerPerFieldDrain
+		FormatKey = "CdRMoteer/Armory/Stats/PowerPerFieldDrainFmt"
+	}
+	{
+		ID = PowerDrainPerFieldSecond
+		FormatKey = "CdRMoteer/Armory/Stats/PowerDrainPerFieldSecondFmt"
+	}
+]

@@ -28,6 +28,13 @@ CdRMoteer
 		StatCategories
 		{
 			HellbringerSmall = "Small Hellbringer Cannon Bullet"
+			ElectroMagneticField = "Electro-Magnetic Field"
+		}
+
+		Stats
+		{
+			PowerPerFieldDrainFmt = "<white>Power Use:</white> <good>{0:0.##########}</good><gray>/sec/drain (assuming field is running at full capacity)</gray>"
+			PowerDrainPerFieldSecondFmt = "<white>Power Drain Within Field:</white> <good>{0:0.##########}</good><gray>/sec (assuming field is running at full capacity)</gray>"
 		}
 	
 		EditorGroups

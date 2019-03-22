@@ -1,7 +1,7 @@
 ID = cdrmoteer.armory
 Name = "CdRMoteer's Armory"
 Version = 1.0.0
-CompatibleGameVersions = ["0.14.7"]
+CompatibleGameVersions = ["0.14.7rc2", "0.14.7"]
 ModifiesMultiplayer = true
 Author = "CdRMoteer"
 Description = "This mod adds weapons, defenses and other items!"
@@ -38,6 +38,12 @@ Actions
 		Action = AddMany
 		AddTo = "<gui/game/parts/part_toggles.txt>/PartToggles"
 		ManyToAdd = &<gui/buttons.txt>/Toggles
+	}
+	// Add Stats
+	{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_stats.txt>/PartStats"
+		ManyToAdd = &<gui/stats.txt>/Stats
 	}
 	/*
 		Not currently needed
