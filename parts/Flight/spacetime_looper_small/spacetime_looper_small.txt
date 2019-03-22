@@ -334,20 +334,16 @@ Part : /BASE_PART
 			File = "blueprints.png"
 			Size = [1, 1]
 		}
+	}
+	Stats
+	{
+		ThrusterForce = &~/Part/Components/MainThruster/Force
+		ThrusterPowerUsage = (&~/Part/Components/MainThruster/FuelUsagePerSecond) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
 
-		PowerUIStats
-		{
-			Type = UIStats
-			Stat = Power
-			Min = .04
-			Ideal = .08
-		}
-		CrewUIStats
-		{
-			Type = UIStats
-			Stat = Crew
-			Min = .25
-			Ideal = .5
-		}
+		MinPower = (&ThrusterPowerUsage) / 2
+		RecPower = &ThrusterPowerUsage
+		MinCrew = (&MinPower) * 2
+		RecCrew = (&RecPower) * 4
 	}
 }

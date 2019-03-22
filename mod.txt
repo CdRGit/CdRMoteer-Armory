@@ -1,7 +1,7 @@
 ID = cdrmoteer.armory
 Name = "CdRMoteer's Armory"
 Version = 1.0.0
-CompatibleGameVersions = ["0.14.5","0.14.6"]
+CompatibleGameVersions = ["0.14.7"]
 ModifiesMultiplayer = true
 Author = "CdRMoteer"
 Description = "This mod adds weapons, defenses and other items!"
@@ -39,16 +39,33 @@ Actions
 		AddTo = "<gui/game/parts/part_toggles.txt>/PartToggles"
 		ManyToAdd = &<gui/buttons.txt>/Toggles
 	}
-	// Add Targetable to PD shot
+	/*
+		Not currently needed
+	// Render Layers
 	{
-		Action = Add
-		AddTo = "<shots/pd_shot/pd_shot.txt>/Components"
-		Name = CdRMoteerTargetable
-		ToAdd
-		{
-			Type = Targetable
-			Health = 100
-			TargetCategory = "cdrmoteer_counter_measure"
-		}
+		Action = AddMany
+		AddTo = "<ships/terran/terran.txt>/Terran/RenderLayers"
+		ManyToAdd = 
+		[
+			// Below Floors.
+			{
+				Key = "cdrmoteer_below_floors"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = -500
+					RenderStage = Lower
+					DrawWithShipGhost = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./Data/ships/common/parts.shader"
+					}
+				}
+			}
+		]
 	}
+	*/
 ]

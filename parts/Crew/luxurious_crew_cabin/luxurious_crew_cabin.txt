@@ -175,12 +175,5 @@ Part : /BASE_PART
 			File = "blueprints.png"
 			Size = [2, 3]
 		}
-
-		CrewUIStats
-		{
-			Type = UIStats
-			Stat = Crew
-			Provided = 6
-		}
 	}
 }

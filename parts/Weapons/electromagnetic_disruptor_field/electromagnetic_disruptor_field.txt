@@ -409,20 +409,5 @@ Part : /BASE_PART
 			File = "blueprints.png"
 			Size = [2, 2]
 		}
-
-		PowerUIStats
-		{
-			Type = UIStats
-			Stat = Power
-			Min = .02
-			Ideal = .02
-		}
-		CrewUIStats
-		{
-			Type = UIStats
-			Stat = Crew
-			Min = 1
-			Ideal = 1
-		}
 	}
 }

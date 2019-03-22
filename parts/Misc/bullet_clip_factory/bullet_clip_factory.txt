@@ -345,20 +345,20 @@ Part : /BASE_PART
 			File = "blueprints.png"
 			Size = [2, 2]
 		}
+	}
 
-		PowerUIStats
-		{
-			Type = UIStats
-			Stat = Power
-			Min = .4
-			Ideal = .8
-		}
-		CrewUIStats
-		{
-			Type = UIStats
-			Stat = Crew
-			Min = .25
-			Ideal = .5
-		}
+	Stats
+	{
+		AmmoProduction = (&~/Part/Components/AmmoConverter/ToQuantity) / (&~/Part/Components/AmmoConverter/Interval)
+		AmmoCapacity = &~/Part/Components/ClipStorage/MaxAmmo
+		PowerPerAmmo = (&~/Part/Components/AmmoConverter/FromQuantity) / (&~/Part/Components/AmmoConverter/ToQuantity) / 1000
+		PowerPerSecond = (&~/Part/Components/AmmoConverter/FromQuantity) / (&~/Part/Components/AmmoConverter/Interval) / 1000
+		AmmoPowerUsage = [&../PowerPerAmmo, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
+
+		MinPower = (&PowerPerSecond) / 2
+		RecPower = &PowerPerSecond
+		MinCrew = (&MinPower) * 2
+		RecCrew = (&RecPower) * 4
 	}
 }
