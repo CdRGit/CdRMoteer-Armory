@@ -17,7 +17,7 @@ Components
 			{
 				Type = ExplosiveAmmoDrain
 				AmmoType = battery
-				TotalDrain = 50000
+				TotalDrain = 250000
 				Radius = 500
 				Slices = 1
 				AllowFriendlyDrain = false
@@ -39,7 +39,7 @@ Components
 			{
 				Type = ExplosiveAmmoDrain
 				AmmoType = battery
-				TotalDrain = 25000
+				TotalDrain = 125000
 				Radius = 500
 				Slices = 1
 				AllowFriendlyDrain = true
@@ -61,7 +61,7 @@ Components
 			{
 				Type = AmmoDrain
 				AmmoType = cdrmoteer_internal
-				Amount = 100
+				Amount = 500
 				AllowFriendlyDrain = true
 			}
 		]
