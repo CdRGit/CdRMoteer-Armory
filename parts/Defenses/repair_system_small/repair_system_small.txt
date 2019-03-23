@@ -186,6 +186,17 @@ Part : /BASE_PART
 					}
 				]
 			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 2]
+					}
+				]
+			}
 		}
 
 		BatterySprites
