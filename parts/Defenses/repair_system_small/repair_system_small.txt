@@ -6,9 +6,9 @@ Part : /BASE_PART
 	EditorGroups = ["Defenses","CdRMoteerArmory"]
 	DescriptionKey = "CdRMoteer/Armory/Parts/RepairSystemSmallDesc"
 	Cost = 2500
-	Size = [1, 1]
+	Size = [1, 2]
 	SelectionPriority = 0
-	MaxHealth = 1000
+	MaxHealth = 2000
 	AutoDoorMaxPathLength = 5
 	SelectionTypeByRotation = true
 	TypeCategories = [defense, uses_power]
@@ -19,7 +19,7 @@ Part : /BASE_PART
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [32, 32]
+		Size = [32, 64]
 	}
 	Components : ^/0/Components
 	{
@@ -53,7 +53,7 @@ Part : /BASE_PART
 		Graphics
 		{
 			Type = Graphics
-			Location = [0.5, 0.5]
+			Location = [0.5, 1]
 			OperationalToggle = IsOperational
 			Floor
 			{
@@ -62,15 +62,15 @@ Part : /BASE_PART
 				[
 					{
 						File = "floor.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "floor_33.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "floor_66.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 				]
 			}
@@ -81,15 +81,15 @@ Part : /BASE_PART
 				[
 					{
 						File = "walls.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "walls_33.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "walls_66.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 				]
 			}
@@ -100,15 +100,15 @@ Part : /BASE_PART
 				[
 					{
 						File = "roof.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "roof_33.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "roof_66.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 				]
 			}
@@ -119,15 +119,15 @@ Part : /BASE_PART
 				[
 					{
 						File = "roof_windows_on.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "roof_windows_on_33.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "roof_windows_on_66.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 				]
 			}
@@ -138,15 +138,51 @@ Part : /BASE_PART
 				[
 					{
 						File = "roof_windows_off.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "roof_windows_off_33.png"
-						Size = [1, 1]
+						Size = [1, 2]
 					}
 					{
 						File = "roof_windows_off_66.png"
-						Size = [1, 1]
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, -1]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"roof_doodads_on1.png"
+							"roof_doodads_on2.png"
+							"roof_doodads_on3.png"
+							"roof_doodads_on4.png"
+							"roof_doodads_on5.png"
+							"roof_doodads_on6.png"
+							"roof_doodads_on7.png"
+							"roof_doodads_on8.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, -1]
+				DamageLevels
+				[
+					{
+						File = "roof_doodads_off.png"
+						Size = [1, 2]
+						AnimationInterval = 0.1
 					}
 				]
 			}
@@ -179,7 +215,7 @@ Part : /BASE_PART
 		OperationEffects
 		{
 			Type = ToggleEffects
-			Location = [1, 1]
+			Location = [0.5, 1]
 			Toggle = PowerToggle
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
@@ -189,7 +225,7 @@ Part : /BASE_PART
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
-			Location = [0, 0]
+			Location = [0.5, 1]
 		}
 
 		Indicators
@@ -225,7 +261,7 @@ Part : /BASE_PART
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [1, 1]
+			Size = [1, 2]
 		}
 	}
 	Stats
