@@ -199,7 +199,7 @@ Part : /BASE_PART
 			}
 		}
 
-		BatterySprites
+		/*BatterySprites
 		{
 			Type = AmmoSprites
 			Location = [.5, .5]
@@ -221,7 +221,7 @@ Part : /BASE_PART
 					Size = [1, 1]
 				}
 			]
-		}
+		}*/
 
 		OperationEffects
 		{
