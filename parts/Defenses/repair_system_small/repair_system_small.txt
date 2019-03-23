@@ -1,0 +1,279 @@
+Part : /BASE_PART
+{
+	NameKey = "CdRMoteer/Armory/Parts/RepairSystemSmall"
+	IconNameKey = "CdRMoteer/Armory/Parts/RepairSystemSmallIcon"
+	ID = cdrmoteer.armory.repair_system_small
+	EditorGroups = ["Defenses","CdRMoteerArmory"]
+	DescriptionKey = "CdRMoteer/Armory/Parts/RepairSystemSmallDesc"
+	Cost = 2500
+	Size = [1, 1]
+	SelectionPriority = 0
+	MaxHealth = 1000
+	AutoDoorMaxPathLength = 5
+	SelectionTypeByRotation = true
+	SelectionTypeID = "thrusters"
+	TypeCategories = [thruster, uses_power] // 'ftl' is a magic category that allows the FTL overlay to efficiently find FTL drives.
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+		}
+
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 2000
+			Priorities = &/PRIORITIES/Thruster_Supply
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 500
+			AmmoDesireToggle = PowerToggle
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on2.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.15
+						RotSpeed = 30d
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 1]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on2.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.15
+						RotSpeed = 30d
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_on.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_windows_on_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_windows_on_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_off.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_windows_off_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_windows_off_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [.5, .5]
+			AmmoStorage = BatteryStorage
+			HasZeroAmmoSprite = true
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "battery0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "battery1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "battery2.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = PowerToggle
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [0, 0]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
+
+		/*MinPower = (&ThrusterPowerUsage) / 2
+		RecPower = &ThrusterPowerUsage
+		MinCrew = (&MinPower) * 2
+		RecCrew = (&RecPower) * 4*/
+	}
+}
