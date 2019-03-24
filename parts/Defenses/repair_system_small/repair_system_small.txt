@@ -32,7 +32,7 @@ Part : /BASE_PART
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
 			Mode = All
 		}
 		
@@ -203,6 +203,57 @@ Part : /BASE_PART
 					}
 				]
 			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on_1.png"
+							"doodads_on_2.png"
+							"doodads_on_3.png"
+							"doodads_on_4.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.25
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [.5, 1.25]
+			Rotation = 180d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			Priorities = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [BatteryStorage, PowerToggle]
+			CrewDestinations
+			[
+				&../../CrewLocation/Location
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
 		}
 
 		BatterySprites
@@ -243,7 +294,7 @@ Part : /BASE_PART
 		Indicators
 		{
 			Type = IndicatorSprites
-			Location = [0.5, 0.5]
+			Location = [0.5, 1]
 			Layer = "indicators"
 			Indicators
 			[
@@ -263,6 +314,16 @@ Part : /BASE_PART
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}
