@@ -5,7 +5,7 @@ Part : /BASE_PART
 	ID = cdrmoteer.armory.repair_system_small
 	EditorGroups = ["Defenses","CdRMoteerArmory"]
 	DescriptionKey = "CdRMoteer/Armory/Parts/RepairSystemSmallDesc"
-	Cost = 2500
+	Cost = 5000
 	Size = [1, 2]
 	SelectionPriority = 0
 	MaxHealth = 2000
@@ -335,6 +335,43 @@ Part : /BASE_PART
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [1, 2]
+		}
+		
+		RepairTrigger
+		{
+			Type = Timer
+			OperationalToggle = IsOperational
+			Duration = 1
+			AutoStart = true
+			Repeats = true
+		}
+		RepairEffects
+		{
+			Type = TriggeredEffects
+			Location = [0.5, 1]
+			Trigger = RepairTrigger
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = -1000
+					Radius = 10
+					DamagesOperationalHealth = true
+					DamagesStructuralHealth = true
+					ExpandDuration = .1
+					ExpandStartRadius = 2
+					AllowFriendlyDamage = true
+				}
+			]
+		}
+		
+		PowerDrain
+		{
+			Type = AmmoConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 100
+			Interval = 0.5
 		}
 	}
 	Stats
