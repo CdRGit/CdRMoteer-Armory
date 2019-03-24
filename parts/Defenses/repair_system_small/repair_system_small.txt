@@ -205,29 +205,24 @@ Part : /BASE_PART
 			}
 		}
 
-		/*BatterySprites
+		BatterySprites
 		{
 			Type = AmmoSprites
-			Location = [.5, .5]
+			Location = [.5, 1]
 			AmmoStorage = BatteryStorage
-			HasZeroAmmoSprite = true
-			Layer = "doodads_high"
+			Layer = "doodads_low"
 			AmmoLevels
 			[
 				{
-					File = "battery0.png"
-					Size = [1, 1]
-				}
-				{
 					File = "battery1.png"
-					Size = [1, 1]
+					Size = [1, 2]
 				}
 				{
 					File = "battery2.png"
-					Size = [1, 1]
+					Size = [1, 2]
 				}
 			]
-		}*/
+		}
 
 		OperationEffects
 		{
