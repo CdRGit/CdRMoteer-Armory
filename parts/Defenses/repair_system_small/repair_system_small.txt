@@ -363,6 +363,11 @@ Part : /BASE_PART
 					AllowFriendlyDamage = true
 				}
 			]
+			MediaEffects
+			[
+				&<particles/nanobots.txt>
+				&<particles/smoke.txt>
+			]
 		}
 		
 		PowerDrain
