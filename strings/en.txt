@@ -26,7 +26,7 @@ CdRMoteer
 			
 			RepairSystemSmall = "Small Repair System"
 			RepairSystemSmallIcon = "Small Repair System"
-			RepairSystemSmallDesc = "The <good>Small Repair System</good> repairs nearby parts."
+			RepairSystemSmallDesc = "The <good>Small Repair System</good> repairs nearby parts by using nanobots.\n\n'That's no moon' - Obi-Wan Kenobi"
 		}
 		
 		StatCategories
