@@ -1,0 +1,182 @@
+Part : /BASE_PART
+{
+	NameKey = "CdRMoteer/Armory/Temp"
+	IconNameKey = "CdRMoteer/Armory/Temp"
+	ID = "cdrmoteer.armory.armored_bulkhead_section"
+	EditorGroups = ["CdRMoteerArmory", "Defenses"]
+	DescriptionKey = "CdRMoteer/Armory/Temp"
+	Cost = 600
+	Size = [1, 2]
+	SelectionTypeID = "bulkhead"
+	MaxHealth = 6000
+	ExplosiveDamageAbsorption = 100%
+	ExplosiveDamageResistance = 50%
+	TypeCategories = [armor, bulkhead]
+	Flammable = false
+	InitialPenetrationResistance = 7
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CrewSpeedFactor = 0.75
+	Density = 2
+	IsRotateable = true
+	IsWalled = true
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[0, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, 1]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 2]
+		}
+		
+		ExtinguisherStorage
+		{
+			Type = AmmoStorage
+			AmmoType = fire_extinguisher
+			MaxAmmo = 100
+			StartingAmmo = &MaxAmmo
+			SuppliesAmmo = true
+		}
+
+		ExtinguisherProducer
+		{
+			Type = AmmoConverter
+			OperationalToggle = ExtinguisherStorage
+			InvertOperationalToggle = true
+			ToStorage = ExtinguisherStorage
+			ToQuantity = 100
+			Interval = 30
+		}
+
+		ProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = ExtinguisherProducer
+			ShowProgressFor = ExtinguisherProducer
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, 1]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_windows_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_windows_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		ExtinguisherSprite
+		{
+			Type = AmmoSprites
+			Location = [.5, 1]
+			AmmoStorage = ExtinguisherStorage
+			Layer = "doodads_high"
+			HasZeroAmmoSprite = false
+			AmmoLevels
+			[
+				{
+					File = "extinguisher.png"
+					Size = [1, 2]
+				}
+			]
+		}
+	}
+
+	Stats
+	{
+		AbilityCooldown = &~/Part/Components/ExtinguisherProducer/Interval
+	}
+}

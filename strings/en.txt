@@ -2,6 +2,8 @@ CdRMoteer
 {
 	Armory
 	{
+		Temp = "You should not see this, if you do it means the developer is an idiot and didn't make the proper keys yet, bug him about it."
+	
 		Parts
 		{
 			ElectroMagneticField = "Electro-Magnetic Disruption Field"
