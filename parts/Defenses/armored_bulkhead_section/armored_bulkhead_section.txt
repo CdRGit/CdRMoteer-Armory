@@ -54,7 +54,7 @@ Part : /BASE_PART
 		{
 			Type = AmmoStorage
 			AmmoType = fire_extinguisher
-			MaxAmmo = 100
+			MaxAmmo = 200
 			StartingAmmo = &MaxAmmo
 			SuppliesAmmo = true
 		}
@@ -168,7 +168,11 @@ Part : /BASE_PART
 			AmmoLevels
 			[
 				{
-					File = "extinguisher.png"
+					File = "extinguisher1.png"
+					Size = [1, 2]
+				}
+				{
+					File = "extinguisher2.png"
 					Size = [1, 2]
 				}
 			]
