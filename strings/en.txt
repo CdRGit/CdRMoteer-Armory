@@ -29,6 +29,10 @@ CdRMoteer
 			RepairSystemSmall = "Small Repair System"
 			RepairSystemSmallIcon = "Small Repair System"
 			RepairSystemSmallDesc = "The <good>Small Repair System</good> repairs nearby parts by using nanobots.\n\n'That's no moon' - Obi-Wan Kenobi"
+			
+			ArmoredBulkheadSection = "Armored Bulkhead Section"
+			ArmoredBulkheadSectionIcon = "Bulkhead"
+			ArmoredBulkheadSectionDesc = "The <good>Armored Bulkhead Section</good> is meant to block fire from spreading between different modules, it also has emergency fire extinguishers.\n\n'It's the gateway to hell gentleman' - The insane man nextdoor"
 		}
 		
 		StatCategories

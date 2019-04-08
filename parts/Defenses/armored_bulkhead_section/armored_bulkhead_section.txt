@@ -1,11 +1,11 @@
 Part : /BASE_PART
 {
-	NameKey = "CdRMoteer/Armory/Temp"
-	IconNameKey = "CdRMoteer/Armory/Temp"
+	NameKey = "CdRMoteer/Armory/Parts/ArmoredBulkheadSection"
+	IconNameKey = "CdRMoteer/Armory/Parts/ArmoredBulkheadSectionIcon"
 	ID = "cdrmoteer.armory.armored_bulkhead_section"
 	EditorGroups = ["CdRMoteerArmory", "Defenses"]
-	DescriptionKey = "CdRMoteer/Armory/Temp"
-	Cost = 600
+	DescriptionKey = "CdRMoteer/Armory/Parts/ArmoredBulkheadSectionDesc"
+	Cost = 800
 	Size = [1, 2]
 	SelectionTypeID = "bulkhead"
 	MaxHealth = 6000
