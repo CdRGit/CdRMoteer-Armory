@@ -7,6 +7,7 @@ Parts
 	// Defenses
 	&<Defenses/repair_system_small/repair_system_small.txt>/Part
 	&<Defenses/armored_bulkhead_section/armored_bulkhead_section.txt>/Part
+	&<Defenses/surface_shield_system_straight/surface_shield_system_straight.txt>/Part
 	
 	// Flight
 	&<Flight/spacetime_looper_small/spacetime_looper_small.txt>/Part

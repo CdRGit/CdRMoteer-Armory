@@ -1,0 +1,33 @@
+Part : /BASE_PART
+{
+	ID = cdrmoteer.armory.surface_shield_system_straight
+	NameKey = "CdRMoteer/Armory/Temp"
+	IconNameKey = "CdRMoteer/Armory/Temp"
+	DescriptionKey = "CdRMoteer/Armory/Temp"
+	EditorGroups = ["CdRMoteerArmory","Defenses"]
+	Cost = 8000
+	AIValue = (&Cost) * 5
+	Size = [4, 2]
+	PhysicalRect = [0, 1, 4, 1]
+	SaveRect = &PhysicalRect
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 4000
+	TypeCategories = [defense, uses_power]
+	PenetrationRectType = Normal
+	ProhibitAbove = 3
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[4, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 32]
+	}
+}
