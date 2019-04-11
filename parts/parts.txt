@@ -11,6 +11,7 @@ Parts
 	
 	// Flight
 	&<Flight/spacetime_looper_small/spacetime_looper_small.txt>/Part
+	&<Flight/rapid_ftl_system/rapid_ftl_system.txt>/Part
 	
 	// Crew
 	&<Crew/luxurious_crew_cabin/luxurious_crew_cabin.txt>/Part
