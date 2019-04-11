@@ -3,7 +3,7 @@ Parts
 	// Weapons
 	&<Weapons/electromagnetic_disruptor_field/electromagnetic_disruptor_field.txt>/Part
 	&<Weapons/hellbringer_cannon_small/hellbringer_cannon_small.txt>/Part
-	&<Weapons/heavy_anti_fighter_laser_cannon/heavy_anti_fighter_laser_cannon.txt>/Part
+	/*&<Weapons/heavy_anti_fighter_laser_cannon/heavy_anti_fighter_laser_cannon.txt>/Part*/
 	
 	// Defenses
 	&<Defenses/repair_system_small/repair_system_small.txt>/Part
