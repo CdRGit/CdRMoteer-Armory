@@ -12,6 +12,13 @@ Part : /BASE_PART
 	AutoDoorMaxPathLength = 5
 	TypeCategories = [ftl, uses_power] // 'ftl' is a magic category that allows the FTL overlay to efficiently find FTL drives.
 	IgnoreRotationForSelection = true
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+		[0, 2]
+		[1, 2]
+	]
 	EditorIcon
 	{
 		Texture
@@ -66,7 +73,7 @@ Part : /BASE_PART
 			ToStorage = ChargeStorage
 			FromQuantity = 160
 			ToQuantity = 1
-			Interval = 0.02
+			Interval = 0.04
 		}
 
 		ChargeProgressBar
@@ -81,8 +88,8 @@ Part : /BASE_PART
 			Type = FtlDrive
 			OperationalToggle = PowerToggle
 			AmmoStorage = ChargeStorage
-			SpinDownDuration = 5
-			JumpEfficiencyDistanceRange = [5, 30]
+			SpinDownDuration = 20
+			JumpEfficiencyDistanceRange = [10, 25]
 		}
 
 		Graphics
@@ -287,11 +294,11 @@ Part : /BASE_PART
 				: /BASE_SOUNDS/AudioExterior
 				{
 					Sound = "ftl_spin.wav"
-					Volume = .5
-					Speed = 5
+					Volume = 20
+					Speed = 1
 					MaxConcurrent = 0
-					VolumeOverIntensity = 1
-					SpeedOverIntensity = [0, 1]
+					VolumeOverIntensity = [0, 20]
+					SpeedOverIntensity = 1
 				}
 			]
 		}
