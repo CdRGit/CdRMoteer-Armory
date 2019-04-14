@@ -33,6 +33,10 @@ CdRMoteer
 			ArmoredBulkheadSection = "Armored Bulkhead Section"
 			ArmoredBulkheadSectionIcon = "Bulkhead"
 			ArmoredBulkheadSectionDesc = "The <good>Armored Bulkhead Section</good> is meant to block fire from spreading between different modules, it also has emergency fire extinguishers.\n\n'It's the gateway to hell gentleman' - The insane man nextdoor"
+			
+			RapidFtlSystem = "Rapid FTL System"
+			RapidFtlSystemIcon = "Rapid FTL"
+			RapidFtlSystemDesc = "The <good>Rapid FTL System</good> is capable of engaging FTL within 4 seconds, as long as the crew charges it beforehand.\n\n'Gotta go fast' - Ilya246"
 		}
 		
 		StatCategories

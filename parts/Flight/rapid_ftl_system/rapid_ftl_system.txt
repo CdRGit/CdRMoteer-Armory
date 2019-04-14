@@ -1,8 +1,8 @@
 Part : /BASE_PART
 {
-	NameKey = "CdRMoteer/Armory/Temp"
-	IconNameKey = "CdRMoteer/Armory/Temp"
-	DescriptionKey = "CdRMoteer/Armory/Temp"
+	NameKey = "CdRMoteer/Armory/Parts/RapidFtlSystem"
+	IconNameKey = "CdRMoteer/Armory/Parts/RapidFtlSystemIcon"
+	DescriptionKey = "CdRMoteer/Armory/Parts/RapidFtlSystemDesc"
 	ID = cdrmoteer.armory.rapid_ftl_system
 	EditorGroups = ["CdRMoteerArmory", "Flight"]
 	Cost = 15000
