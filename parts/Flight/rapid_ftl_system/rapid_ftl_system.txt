@@ -65,7 +65,7 @@ Part : /BASE_PART
 			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
-		FTLCharger
+		FtlCharger
 		{
 			Type = AmmoConverter
 			OperationalToggle = FtlDrive
@@ -80,7 +80,11 @@ Part : /BASE_PART
 		{
 			Type = ProgressBar
 			OperationalToggle = PowerToggle
-			ShowProgressFor = ChargeStorage
+			ShowProgressFor = FtlDrive
+			LowColor = [0, 0, 0]
+			HighColor = [0, 61, 122]
+			FullColor = [0, 122, 255]
+			Height = 10
 		}
 
 		FtlDrive
@@ -119,7 +123,7 @@ Part : /BASE_PART
 			}
 			OperationalDoodad
 			{
-				Layer = "doodads_high"
+				Layer = "doodads_low"
 				DamageLevels
 				[
 					{
@@ -131,8 +135,6 @@ Part : /BASE_PART
 							"doodads_on4.png"
 							"doodads_on5.png"
 							"doodads_on6.png"
-							"doodads_on7.png"
-							"doodads_on8.png"
 						]
 						Size = [2, 2]
 						AnimationInterval = 0.00625
@@ -141,34 +143,12 @@ Part : /BASE_PART
 			}
 			NonOperationalDoodad
 			{
-				Layer = "doodads_high"
+				Layer = "doodads_low"
 				DamageLevels
 				[
 					{
 						File = "doodads_off.png"
 						Size = [2, 2]
-					}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"lights1.png"
-							"lights2.png"
-							"lights3.png"
-							"lights4.png"
-							"lights5.png"
-							"lights6.png"
-							"lights7.png"
-							"lights8.png"
-						]
-						Size = [2, 2]
-						AnimationInterval = 0.00625
 					}
 				]
 			}
@@ -303,14 +283,75 @@ Part : /BASE_PART
 			]
 		}
 
+		ChargeSprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = ChargeStorage
+			Layer = "doodads_high"
+			HasZeroAmmoSprite = true
+			AmmoLevels
+			[
+				{
+					File = "charge0.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge4.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge5.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge6.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge7.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge8.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge9.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge10.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
 		BatterySprites
 		{
 			Type = AmmoSprites
 			Location = [1, 1]
 			AmmoStorage = BatteryStorage
-			Layer = "doodads_low"
+			Layer = "doodads_high"
+			HasZeroAmmoSprite = true
 			AmmoLevels
 			[
+				{
+					File = "power0.png"
+					Size = [2, 2]
+				}
 				{
 					File = "power1.png"
 					Size = [2, 2]
