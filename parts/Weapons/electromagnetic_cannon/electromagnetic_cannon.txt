@@ -292,7 +292,7 @@ Part : /BASE_PART
 			}
 		}
 
-		BeamEmitter : <./Data/shots/ion_beam/ion_beam.txt>
+		BeamEmitter : <beam/beam.txt>
 		{
 			Type = BeamEmitter
 			ChainedTo = Weapon
