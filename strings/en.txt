@@ -37,12 +37,17 @@ CdRMoteer
 			RapidFtlSystem = "Rapid FTL System"
 			RapidFtlSystemIcon = "Rapid FTL"
 			RapidFtlSystemDesc = "The <good>Rapid FTL System</good> is capable of engaging FTL within 4 seconds, as long as the crew charges it beforehand.\n\n'Gotta go fast' - Ilya246"
+			
+			ElectroMagneticCannon = "Electro-Magnetic Cannon"
+			ElectroMagneticCannonIcon = "Electro Cannon"
+			ElectroMagneticCannonDesc = "The <good>Electro-Magnetic Cannon</good> can drain a bit of energy from enemy ships in the area where it impacts.\n\n'Cool crew don't look at EMP's' - DARKNESSRY"
 		}
 		
 		StatCategories
 		{
 			HellbringerSmall = "Small Hellbringer Cannon Bullet"
 			ElectroMagneticField = "Electro-Magnetic Field"
+			ElectroMagneticCannon = "Electro-Magnetic Cannon Beam"
 		}
 
 		Stats
