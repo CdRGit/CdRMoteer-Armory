@@ -6,6 +6,9 @@ Parts
 	/*&<Weapons/heavy_anti_fighter_laser_cannon/heavy_anti_fighter_laser_cannon.txt>/Part*/
 	&<Weapons/electromagnetic_cannon/electromagnetic_cannon.txt>/Part
 	
+	// Factory
+	&<Misc/bullet_clip_factory/bullet_clip_factory.txt>/Part
+	
 	// Defenses
 	&<Defenses/repair_system_small/repair_system_small.txt>/Part
 	&<Defenses/armored_bulkhead_section/armored_bulkhead_section.txt>/Part
@@ -17,6 +20,7 @@ Parts
 	// Crew
 	&<Crew/luxurious_crew_cabin/luxurious_crew_cabin.txt>/Part
 	
+	// Power
+	
 	// Misc
-	&<Misc/bullet_clip_factory/bullet_clip_factory.txt>/Part
 ]
