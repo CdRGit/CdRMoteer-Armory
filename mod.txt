@@ -4,7 +4,10 @@ Version = 0.1.0
 CompatibleGameVersions = ["0.14.7", "0.14.8", "0.14.9"]
 ModifiesMultiplayer = true
 Author = "CdRMoteer"
-Description = "This mod adds weapons, defenses and other items!"
+Description = "This mod adds weapons, defenses and other items!\n"\
+"Credits: \n"\
+"\t<good>CdRMoteer:</good> Programmer\n"\
+"\t<good>Drakador:</good> Part group icon\n"
 StringsFolder = "strings"
 Actions
 [
@@ -38,6 +41,19 @@ Actions
 		Action = AddMany
 		AddTo = "<gui/game/parts/part_toggles.txt>/PartToggles"
 		ManyToAdd = &<gui/buttons.txt>/Toggles
+	}
+	// Indicators
+	{
+		Action = Add
+		AddTo = "<gui/game/indicators/indicators.txt>"
+		Name = "RepairWarning"
+		ToAdd = &<gui/indicators.txt>/Indicators/0
+	}
+	{
+		Action = Add
+		AddTo = "<gui/game/indicators/indicators.txt>"
+		Name = "RepairEmergency"
+		ToAdd = &<gui/indicators.txt>/Indicators/1
 	}
 	// Add Stats
 	{

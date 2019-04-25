@@ -1,0 +1,6 @@
+Indicators
+[
+	// Repairing / Crew Attention
+	"indicator_repair_warning.png"
+	"indicator_repair_emergency.png"
+]
