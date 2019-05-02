@@ -1,0 +1,89 @@
+Part : /BASE_PART
+{
+	NameKey = "CdRMoteer/Armory/Temp"
+	IconNameKey = "CdRMoteer/Armory/Temp"
+	DescriptionKey = "CdRMoteer/Armory/Temp"
+	ID = cdrmoteer.armory.scanning_array
+	EditorGroups = ["CdRMoteerArmory", "Misc"]
+	Cost = 5000
+	Size = [1, 2]
+	SelectionPriority = 1
+	MaxHealth = 2000
+	TypeCategories = [uses_power, is_crewed]
+	IgnoreRotationForMirroredSelection = true
+	BlockedTravelCells
+	[
+		[0, 0]
+	]
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[1, 1]
+		[0, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+		GenericOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, PartCrew]
+			Mode = All
+		}
+		StandardComponents
+		{
+			Type = ToggledComponents
+			Toggle = GenericOperational
+			Components = &<modes/standard.txt>/Components
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+		}
+		
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 2000
+			Priorities = &/PRIORITIES/Utility_Supply
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 1000
+			AmmoDesireToggle = PowerToggle
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [0.5, 1.5]
+			Rotation = 180d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			Priorities = &/PRIORITIES/Utility_Crew
+			PrerequisitesBeforeCrewing = [BatteryStorage, PowerToggle]
+			CrewDestinations
+			[
+				[0.5, 1.5]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+	}
+}

@@ -73,4 +73,9 @@ Toggles
 			}
 		]
 	}
+	
+	// Scanning Array Mode
+	{
+	
+	}
 ]
