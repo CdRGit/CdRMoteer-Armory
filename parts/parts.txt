@@ -1,10 +1,14 @@
 Parts
 [	
-	// Weapons
+	// Weapons Energy
 	&<Weapons/electromagnetic_disruptor_field/electromagnetic_disruptor_field.txt>/Part
 	&<Weapons/hellbringer_cannon_small/hellbringer_cannon_small.txt>/Part
 	/*&<Weapons/heavy_anti_fighter_laser_cannon/heavy_anti_fighter_laser_cannon.txt>/Part*/
+	
+	// Weapons Projectiles
 	&<Weapons/electromagnetic_cannon/electromagnetic_cannon.txt>/Part
+	
+	// Weapons Missile
 	
 	// Factory
 	&<Misc/bullet_clip_factory/bullet_clip_factory.txt>/Part
@@ -21,7 +25,7 @@ Parts
 	&<Crew/luxurious_crew_cabin/luxurious_crew_cabin.txt>/Part
 	
 	// Power
-	&<Power/advanced_generator_core/advanced_generator_core.txt>/Part	
+	/*&<Power/advanced_generator_core/advanced_generator_core.txt>/Part*/
 	
 	// Misc
 ]
