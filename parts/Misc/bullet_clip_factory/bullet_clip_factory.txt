@@ -292,9 +292,12 @@ Part : /BASE_PART
 					TotalDamage = 25000
 					Radius = 4
 					Delay = .05
-					DamagesOperationalHealth = true
-					DamagesStructuralHealth = false
-					AllowFriendlyDamage = true
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
 					FireChancePerNDamage = 50%
 					NDamage = 1000
 				}
@@ -303,9 +306,12 @@ Part : /BASE_PART
 					TotalDamage = 5000
 					Radius = 3
 					Delay = .05
-					DamagesOperationalHealth = false
-					DamagesStructuralHealth = true
-					AllowFriendlyDamage = true
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
 				}
 			]
 		}
