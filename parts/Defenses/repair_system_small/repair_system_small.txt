@@ -356,11 +356,13 @@ Part : /BASE_PART
 					Type = ExplosiveDamage
 					TotalDamage = -1000
 					Radius = 10
-					DamagesOperationalHealth = true
-					DamagesStructuralHealth = true
 					ExpandDuration = .1
 					ExpandStartRadius = 2
-					AllowFriendlyDamage = true
+					Filter
+					{
+						Friendlies = true
+						Enemies = true
+					}
 				}
 			]
 			MediaEffects

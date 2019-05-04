@@ -34,9 +34,6 @@ Components
 					TotalDrain = 25000
 					Radius = 500
 					Slices = 1
-					AllowFriendlyDrain = false
-					DrainsParts = true
-					DrainsShields = true
 
 					MediaEffectsOnDrainFactor = .00025
 					MediaEffectsOnDrain
@@ -51,6 +48,11 @@ Components
 							SpeedVariation = .2
 						}
 					]
+					Filter
+					{
+						Ships = true
+						Shields = true
+					}
 				}
 				{
 					Type = ExplosiveAmmoDrain
@@ -75,6 +77,12 @@ Components
 							SpeedVariation = .2
 						}
 					]
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+					}
 				}
 			]
 		}
