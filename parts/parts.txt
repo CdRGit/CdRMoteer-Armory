@@ -28,5 +28,4 @@ Parts
 	/*&<Power/advanced_generator_core/advanced_generator_core.txt>/Part*/
 	
 	// Misc
-	&<Misc/scanning_array/scanning_array.txt>/Part
 ]
