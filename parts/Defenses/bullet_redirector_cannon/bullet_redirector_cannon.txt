@@ -83,6 +83,13 @@ Part : /BASE_PART
 			Mode = FireModeToggle
 			OnMode = 2
 		}
+
+		TractorModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "tractor_mode"
+			Default = 1
+		}
 		
 		BatteryStorage
 		{
@@ -216,18 +223,21 @@ Part : /BASE_PART
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 5
+			FireInterval = .2
 			FiringArc = 90d
-			RotateSpeed = 45d
+			RotateSpeed = 360d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 1000
-			Emitter = BulletEmitter
+			Emitter = EmitterProxy
+			AllowDirectControl = false
+			TargetSearchesPerSecond = 4 // Default is 2.
+			HoldTargetAfterCancel = .5
 
 			AutoTargets
 			[
 				{
-					TargetType = ShipParts
-					Toggle = FireModeToggle
+					TargetType = Bullets
+					BulletTargetCategories = [missile, mine, bullet]
 				}
 			]
 
@@ -254,29 +264,66 @@ Part : /BASE_PART
 			OperationalToggle = IsOperational
 			ShowProgressFor = Turret
 		}
-		
-		BulletEmitter
+
+		PullComponents
 		{
-			Type = BulletEmitter
-			ChainedTo = Turret
-			FireTrigger = Turret
-			GetTargetFrom = Turret
-			Location = [1.75, -0.25]
-			OperationalToggle = IsOperational
-			Bullet = &<bullet/shot.txt>
-			Spread = [-15d, 15d]
-			AmmoUsage
-			[
+			Type = ToggledComponents
+			Toggle = TractorModeToggle
+			Invert = true
+			Components
+			{
+				BeamEmitter : <beam/tractor_beam_pull.txt>
 				{
+					Type = BeamEmitter
+					ChainedTo = Turret
+					Location = [1.5, 0]
+					FireTrigger = Turret
+					GetTargetFrom = Turret
+					OperationalToggle = IsOperational
 					AmmoStorage = BatteryStorage
-					AmmoUsed = 50
+					SourceShipCollisions = false
+					AmmoUsed = ceil(500 * (&~/Part/Components/Turret/FireInterval))
+					AmmoUsageScaleOverRange = [.1, 1]
+					ValueOverRange = [.1, 1]
+					MinAmmoUsed = 1
 				}
-			]
-			Burst = 10
-			BurstDelay = 0.01
-			Recoil = 1
-			UseAmmoPerShotInBurst = true
+			}
 		}
+
+		PushComponents
+		{
+			Type = ToggledComponents
+			Toggle = TractorModeToggle
+			Components
+			{
+				BeamEmitter : <beam/tractor_beam_push.txt>
+				{
+					Type = BeamEmitter
+					ChainedTo = Turret
+					Location = [1.5, 0]
+					FireTrigger = Turret
+					GetTargetFrom = Turret
+					OperationalToggle = IsOperational
+					AmmoStorage = BatteryStorage
+					SourceShipCollisions = false
+					AmmoUsed = ceil(500 * (&~/Part/Components/Turret/FireInterval))
+					AmmoUsageScaleOverRange = [.1, 1]
+					ValueOverRange = [-.1, -.5]
+					MinAmmoUsed = 1
+				}
+			}
+		}
+
+		EmitterProxy
+		{
+			Type = EmitterProxy
+			ComponentID = BeamEmitter
+		}
+		/*EmitterValueProxy
+		{
+			Type = ValueProxy
+			ComponentID = BeamEmitter
+		}*/
 
 		FireEffect
 		{
@@ -478,34 +525,46 @@ Part : /BASE_PART
 	Stats
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
 
-		MinPower = (&../StatsByCategory/0/Stats/PowerPerSecond) / 2
-		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+		MinPower = min((&../StatsByCategory/0/Stats/PowerUsageContinuous) / 8 "," (&../StatsByCategory/1/Stats/PowerUsageContinuous) / 4)
+		RecPower = max((&../StatsByCategory/0/Stats/PowerUsageContinuous) / 2 "," (&../StatsByCategory/1/Stats/PowerUsageContinuous))
 		MinCrew = (&CrewRequired) + (&MinPower) * 2
-		RecCrew = (&CrewRequired) + (&MinPower) * 4
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
 	}
 
 	StatsByCategory
 	[
 		{
-			NameKey = "CdRMoteer/Armory/StatCategories/HellbringerSmall"
+			NameKey = "StatCategories/TractorBeamPull"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
-				DamagePerSecond = (&DamagePerShot) * (&ROF)
-				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				Penetration = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration
-				FireChance = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/PenetratingOperational/HitEffects/1/FireChance) * 100
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
-				Range = &~/Part/Components/BulletEmitter/Bullet/Range
+				ImpulsePerShot = &~/Part/Components/PullComponents/Components/BeamEmitter/TractorImpulse
+				HitInterval = &~/Part/Components/PullComponents/Components/BeamEmitter/HitInterval
+				Force = (&ImpulsePerShot) / (&HitInterval)
+				Range = &~/Part/Components/PullComponents/Components/BeamEmitter/Range
+				Stretch = &~/Part/Components/PullComponents/Components/BeamEmitter/StretchRange
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
-				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1)
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
-				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
-				PowerPerShot = (&~/Part/Components/BulletEmitter/AmmoUsage/0/AmmoUsed) / 1000
-				PowerPerSecond = (&PowerPerShot) * (&ROF)
+				PowerPerShot = (&~/Part/Components/PullComponents/Components/BeamEmitter/AmmoUsed) / 1000
+				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
+			}
+		}
+		{
+			NameKey = "StatCategories/TractorBeamPush"
+			Stats
+			{
+				ImpulsePerShot = &~/Part/Components/PushComponents/Components/BeamEmitter/TractorImpulse
+				HitInterval = &~/Part/Components/PushComponents/Components/BeamEmitter/HitInterval
+				Force = (&ImpulsePerShot) / (&HitInterval)
+				Range = &~/Part/Components/PushComponents/Components/BeamEmitter/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				PowerPerShot = (&~/Part/Components/PushComponents/Components/BeamEmitter/AmmoUsed) / 1000
+				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 			}
 		}
 	]
+
+	StatsNotesKey = "Stats/TractorBeamNotes"
 }
