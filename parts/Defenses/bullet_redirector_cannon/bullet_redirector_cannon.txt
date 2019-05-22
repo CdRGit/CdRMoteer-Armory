@@ -1,24 +1,23 @@
 Part : /BASE_PART
 {
-	NameKey = "CdRMoteer/Armory/Parts/HellbringerSmall"
-	IconNameKey = "CdRMoteer/Armory/Parts/HellbringerSmallIcon"
+	NameKey = "CdRMoteer/Armory/Temp"
+	IconNameKey = "CdRMoteer/Armory/Temp"
 	ID = cdrmoteer.armory.hellbringer_cannon_small
 	OtherIDs = [cdrmoteer.hellbringer_cannon_small]
-	EditorGroups = ["WeaponsProjectile","CdRMoteerArmory"]
-	DescriptionKey = "CdRMoteer/Armory/Parts/HellbringerSmallDesc"
-	Cost = 3000
+	EditorGroups = ["WeaponsEnergy", "Defenses","CdRMoteerArmory"]
+	DescriptionKey = "CdRMoteer/Armory/Temp"
+	Cost = 6000
 	AIValue = 10
-	TypeCategories = [weapon, uses_bullet_clips, uses_power, is_crewed]
+	TypeCategories = [defense, uses_power, is_crewed]
 	Size = [2, 2]
 	PhysicalRect = [0, 1, 2, 1]
 	SaveRect = &PhysicalRect
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
-	SelectionTypeID = "cannons"
 	MaxHealth = 9000
 	InitialPenetrationResistance = 5
 	PenetrationRectType = Normal
-	ProhibitAbove = 1
+	ProhibitAbove = 3
 	AllowedDoorLocations
 	[
 		[-1, 1]
@@ -84,34 +83,6 @@ Part : /BASE_PART
 			Type = ModeToggle
 			Mode = FireModeToggle
 			OnMode = 2
-		}
-
-		LoadedAmmo
-		{
-			Type = AmmoStorage
-			AmmoType = cdrmoteer_bullet_clip
-			MaxAmmo = 10
-			DelayBeforeReadyToUse = .25
-			AnticipateMoreAmmoFrom = ["AmmoStorage"]
-		}
-
-		AmmoStorage
-		{
-			Type = AmmoConsumer
-			AmmoType = cdrmoteer_bullet_clip
-			MaxAmmo = 10
-			Priorities = &/PRIORITIES/Weapon_Supply
-			JobUnassignThreshold = 1000000// Effectively unassignable.
-			AdditionalStorageForJobPriority = [LoadedAmmo]
-			AmmoDesireToggle = PowerToggle
-
-			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/AmmoDeliver
-		}
-
-		AmmoPrereq
-		{
-			Type = AmmoSum
-			AmmoStorages = [LoadedAmmo, AmmoStorage]
 		}
 		
 		BatteryStorage
@@ -298,10 +269,6 @@ Part : /BASE_PART
 			AmmoUsage
 			[
 				{
-					AmmoStorage = LoadedAmmo
-					AmmoUsed = 1
-				}
-				{
 					AmmoStorage = BatteryStorage
 					AmmoUsed = 50
 				}
@@ -338,24 +305,6 @@ Part : /BASE_PART
 					Duration = .25
 				}
 			]
-		}
-
-		AmmoLoader
-		{
-			Type = AmmoConverter
-			FromStorage = AmmoStorage
-			ToStorage = LoadedAmmo
-			FromQuantity = 10
-			ToQuantity = 10
-			DelayTrigger = Turret
-			DelayAfterTrigger = .1
-		}
-
-		LoadEffects
-		{
-			Type = TriggeredEffects
-			Trigger = AmmoLoader
-			MediaEffects = &/COMMON_EFFECTS/AmmoLoad
 		}
 
 		CrewLocation
@@ -445,117 +394,6 @@ Part : /BASE_PART
 				ClampAnimation = true
 			}
 		}
-
-		LoadedAmmoSprites
-		{
-			Type = AmmoSprites
-			ChainedTo = Turret
-			Location = [-0.0625, -0.29]
-			Rotation = 90d
-			AmmoStorage = LoadedAmmo
-			HasZeroAmmoSprite = true
-			Layer = "doodads_high"
-			AmmoLevels
-			[
-				{
-					File = "loaded00.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded01.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded02.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded03.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded04.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded05.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded06.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded07.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded08.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded09.png"
-					Size = [1, 1]
-				}
-				{
-					File = "loaded10.png"
-					Size = [1, 1]
-				}
-			]
-		}
-
-		AmmoSprites
-		{
-			Type = AmmoSprites
-			ChainedTo = Turret
-			Location = [-0.25, 0]
-			Rotation = 90d
-			AmmoStorage = AmmoStorage
-			Layer = "doodads_low"
-			AmmoLevels
-			[
-				{
-					File = "bullets1.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets2.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets3.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets4.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets5.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets6.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets7.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets8.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets9.png"
-					Size = [1, 1]
-				}
-				{
-					File = "bullets10.png"
-					Size = [1, 1]
-				}
-			]
-		}
 		
 		BatterySprites
 		{
@@ -589,38 +427,6 @@ Part : /BASE_PART
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 			Location = [1, 1]
 
-			FactorHitEffectsWith = AmmoPrereq
-			HitEffects
-			[
-				{
-					Type = ExplosiveDamage
-					TotalDamage = 10000
-					Radius = 4
-					Delay = .05
-					Filter
-					{
-						OperationalHealth = true
-						StructuralHealth = false
-						Friendlies = true
-					}
-					FireChancePerNDamage = 50%
-					NDamage = 1000
-				}
-				{
-					Type = ExplosiveDamage
-					TotalDamage = 2000
-					Radius = 3
-					Delay = .05
-					Filter
-					{
-						OperationalHealth = false
-						StructuralHealth = true
-						Friendlies = true
-					}
-				}
-			]
-		}
-
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -635,16 +441,6 @@ Part : /BASE_PART
 					{
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
-					}
-				}
-
-				// Out of ammo.
-				{
-					Toggle = AmmoPrereq
-					AtlasSprite
-					{
-						File = &/INDICATORS/NoAmmo
-						Size = [1.5, 1.5]
 					}
 				}
 
@@ -682,12 +478,9 @@ Part : /BASE_PART
 	Stats
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
-		AmmoCapacity = (&~/Part/Components/AmmoStorage/MaxAmmo) + (&~/Part/Components/LoadedAmmo/MaxAmmo)
 
 		MinPower = (&../StatsByCategory/0/Stats/PowerPerSecond) / 2
 		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
-		MinAmmo = (&../StatsByCategory/0/Stats/AmmoPerSecond) / 2
-		RecAmmo = &../StatsByCategory/0/Stats/AmmoPerSecond
 		MinCrew = (&CrewRequired) + (&MinAmmo) * 1
 		RecCrew = (&CrewRequired) + (&RecAmmo) * 2
 	}
@@ -710,11 +503,8 @@ Part : /BASE_PART
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
 				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
 				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
-				AmmoPerShot = &~/Part/Components/BulletEmitter/AmmoUsage/0/AmmoUsed
 				PowerPerShot = (&~/Part/Components/BulletEmitter/AmmoUsage/0/AmmoUsed) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&ROF)
-				AmmoPerSecond = (&AmmoPerShot) * (&ROF)
-				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]
 			}
 		}
 	]
