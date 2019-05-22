@@ -1,4 +1,4 @@
-ID = "cdrmoteer.armory.hellbeinger_shot_small"
+ID = "cdrmoteer.armory.hellbeinger_shot_small_temp_shit"
 Range = 200
 IdealRange = [60, 150]
 IdealRadius = [5, 50]
