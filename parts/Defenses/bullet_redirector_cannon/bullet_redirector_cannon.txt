@@ -95,7 +95,7 @@ Part : /BASE_PART
 		{
 			Type = AmmoConsumer
 			AmmoType = battery
-			MaxAmmo = 1000
+			MaxAmmo = 2000
 			Priorities = &/PRIORITIES/Weapon_Supply
 			JobUnassignThreshold = 1000000// Effectively unassignable.
 			AmmoDesireToggle = PowerToggle
@@ -225,7 +225,7 @@ Part : /BASE_PART
 			AutoFireToggle = AutoFireToggle
 			FireInterval = .2
 			FiringArc = 90d
-			RotateSpeed = 360d
+			RotateSpeed = 3600d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 1000
 			Emitter = EmitterProxy
@@ -281,7 +281,6 @@ Part : /BASE_PART
 					GetTargetFrom = Turret
 					OperationalToggle = IsOperational
 					AmmoStorage = BatteryStorage
-					SourceShipCollisions = false
 					AmmoUsed = ceil(500 * (&~/Part/Components/Turret/FireInterval))
 					AmmoUsageScaleOverRange = [.1, 1]
 					ValueOverRange = [.1, 1]
@@ -305,7 +304,6 @@ Part : /BASE_PART
 					GetTargetFrom = Turret
 					OperationalToggle = IsOperational
 					AmmoStorage = BatteryStorage
-					SourceShipCollisions = false
 					AmmoUsed = ceil(500 * (&~/Part/Components/Turret/FireInterval))
 					AmmoUsageScaleOverRange = [.1, 1]
 					ValueOverRange = [-.1, -.5]
@@ -319,11 +317,11 @@ Part : /BASE_PART
 			Type = EmitterProxy
 			ComponentID = BeamEmitter
 		}
-		/*EmitterValueProxy
+		EmitterValueProxy
 		{
 			Type = ValueProxy
 			ComponentID = BeamEmitter
-		}*/
+		}
 
 		FireEffect
 		{
@@ -541,7 +539,7 @@ Part : /BASE_PART
 			{
 				ImpulsePerShot = &~/Part/Components/PullComponents/Components/BeamEmitter/TractorImpulse
 				HitInterval = &~/Part/Components/PullComponents/Components/BeamEmitter/HitInterval
-				Force = (&ImpulsePerShot) / (&HitInterval)
+				WeakForce = (&ImpulsePerShot) / (&HitInterval) * 1000
 				Range = &~/Part/Components/PullComponents/Components/BeamEmitter/Range
 				Stretch = &~/Part/Components/PullComponents/Components/BeamEmitter/StretchRange
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
@@ -556,7 +554,7 @@ Part : /BASE_PART
 			{
 				ImpulsePerShot = &~/Part/Components/PushComponents/Components/BeamEmitter/TractorImpulse
 				HitInterval = &~/Part/Components/PushComponents/Components/BeamEmitter/HitInterval
-				Force = (&ImpulsePerShot) / (&HitInterval)
+				WeakForce = (&ImpulsePerShot) / (&HitInterval) * 1000
 				Range = &~/Part/Components/PushComponents/Components/BeamEmitter/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)

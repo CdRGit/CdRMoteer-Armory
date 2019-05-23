@@ -8,4 +8,8 @@ Stats
 		ID = PowerDrainPerFieldSecond
 		FormatKey = "CdRMoteer/Armory/Stats/PowerDrainPerFieldSecondFmt"
 	}
+	{
+		ID = WeakForce
+		FormatKey = "CdRMoteer/Armory/Stats/WeakForceFmt"
+	}
 ]

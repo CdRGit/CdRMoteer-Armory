@@ -2,7 +2,7 @@ Range = 200
 IdealRange = 200
 Duration = .25
 HitInterval = 1 / (&<./Data/rules.txt>/Simulation/PhysicsUpdatesPerSecond)
-TractorImpulse = 12500 * (&HitInterval) // Actual impulse per-ship is half; this is net total of both ships.
+TractorImpulse = 0.005 * (&HitInterval) // Actual impulse per-ship is half; this is net total of both ships.
 HitEffectsScaleOverRange = [.1, 1]
 MediaEffectsScaleOverRange = [.1, 1]
 InvertRangeScaling = true
@@ -92,8 +92,9 @@ HitOperational
 	HitEffects
 	[		
 		{
-			Type = Impulse
-			Impulse = (&~/TractorImpulse) / 2
+			Type = AreaImpulse
+			Impulse = -(&~/TractorImpulse) / 2
+			Radius = 30
 			Filter
 			{
 				Ships = false
