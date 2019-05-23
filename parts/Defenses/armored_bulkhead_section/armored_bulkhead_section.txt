@@ -62,8 +62,6 @@ Part : /BASE_PART
 		ExtinguisherProducer
 		{
 			Type = AmmoConverter
-			OperationalToggle = ExtinguisherStorage
-			InvertOperationalToggle = true
 			ToStorage = ExtinguisherStorage
 			ToQuantity = 100
 			Interval = 30
