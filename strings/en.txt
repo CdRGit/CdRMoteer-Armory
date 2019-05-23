@@ -64,6 +64,9 @@ CdRMoteer
 			
 			WeakForceFmt = "<white>Force:</white> <good>{0:#,0.#}</good><gray> newtons</gray>"
 			
+			RepairAmountFmt = "<white>Repair Amount:</white> <good>{0:0.##}</good><gray>/batch (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+			RepairRadiusFmt = "<white>Repair Radius:</white> <good>{0:0.##}</good><gray>m</gray>"
+			
 			BulletRedirectorCannonNotes = "<gray>NOTE: Pull force and power usage is at maximum range. Push force and power usage is at minimum range.\nNote: Pull attracts to the end of the beam, Push repels from the end of the beam.</gray>"
 		}
 	

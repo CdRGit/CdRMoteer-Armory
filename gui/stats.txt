@@ -12,4 +12,12 @@ Stats
 		ID = WeakForce
 		FormatKey = "CdRMoteer/Armory/Stats/WeakForceFmt"
 	}
+	{
+		ID = RepairAmount
+		FormatKey = "CdRMoteer/Armory/Stats/RepairAmountFmt"
+	}
+	{
+		ID = RepairRadius
+		FormatKey = "CdRMoteer/Armory/Stats/RepairRadiusFmt"
+	}
 ]
