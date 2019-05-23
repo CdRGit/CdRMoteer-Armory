@@ -88,7 +88,7 @@ Part : /BASE_PART
 		{
 			Type = UIToggle
 			ToggleID = "tractor_mode"
-			Default = 1
+			Default = 0
 		}
 		
 		BatteryStorage
@@ -258,11 +258,15 @@ Part : /BASE_PART
 			}
 		}
 
-		ReloadProgressBar
+		TractorBeamPowerBar
 		{
 			Type = ProgressBar
 			OperationalToggle = IsOperational
-			ShowProgressFor = Turret
+			ShowProgressFor = BatteryStorage
+			LowColor = [255, 0, 0]
+			HighColor = [0, 0, 255]
+			FullColor = [122, 0, 255]
+			Height = 10
 		}
 
 		PullComponents
@@ -276,12 +280,12 @@ Part : /BASE_PART
 				{
 					Type = BeamEmitter
 					ChainedTo = Turret
-					Location = [1.5, 0]
+					Location = [.5, 0]
 					FireTrigger = Turret
 					GetTargetFrom = Turret
 					OperationalToggle = IsOperational
 					AmmoStorage = BatteryStorage
-					AmmoUsed = ceil(500 * (&~/Part/Components/Turret/FireInterval))
+					AmmoUsed = ceil(1000 * (&~/Part/Components/Turret/FireInterval))
 					AmmoUsageScaleOverRange = [.1, 1]
 					ValueOverRange = [.1, 1]
 					MinAmmoUsed = 1
@@ -299,12 +303,12 @@ Part : /BASE_PART
 				{
 					Type = BeamEmitter
 					ChainedTo = Turret
-					Location = [1.5, 0]
+					Location = [.5, 0]
 					FireTrigger = Turret
 					GetTargetFrom = Turret
 					OperationalToggle = IsOperational
 					AmmoStorage = BatteryStorage
-					AmmoUsed = ceil(500 * (&~/Part/Components/Turret/FireInterval))
+					AmmoUsed = ceil(1000 * (&~/Part/Components/Turret/FireInterval))
 					AmmoUsageScaleOverRange = [.1, 1]
 					ValueOverRange = [-.1, -.5]
 					MinAmmoUsed = 1
@@ -323,39 +327,11 @@ Part : /BASE_PART
 			ComponentID = BeamEmitter
 		}
 
-		FireEffect
-		{
-			Type = TriggeredEffects
-			ChainedTo = Turret
-			Trigger = Turret
-			Location = [1.75, -0.25]
-			AnchorMediaEffects = true
-
-			MediaEffects
-			[
-				&<particles/cannon_shoot_med.txt>
-				&<particles/cannon_smoke_med.txt>
-
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "shoot.wav"
-					Volume = .25
-					SpeedVariation = .25
-				}
-
-				: /BASE_SHAKE
-				{
-					ShakeAmount = .0125
-					Duration = .25
-				}
-			]
-		}
-
 		CrewLocation
 		{
 			Type = CrewLocation
 			ChainedTo = Turret
-			Location = [-0.125, 0.125]
+			Location = [-0.125, 0]
 			Rotation = 270d
 		}
 		PartCrew
@@ -410,32 +386,44 @@ Part : /BASE_PART
 			}
 		}
 
-		BarrelSprite
+		WeaponGraphics
 		{
-			Type = Sprite
+			Type = Graphics
 			ChainedTo = Turret
-			Location = [.5, 0]
+			Location = [0.25, 0]
 			Rotation = 90d
-			Layer = "weapons"
-			ResetAnimationTrigger = Turret
-			AtlasSprite
+			OperationalToggle = IsOperational
+			AnimationSpeedFactor = EmitterValueProxy
+			OperationalDoodad
 			{
-				AnimationFiles
+				Layer = "weapons"
+				DamageLevels
 				[
-					"barrel1.png"
-					"barrel2.png"
-					"barrel3.png"
-					"barrel4.png"
-					"barrel5.png"
-					"barrel6.png"
-					"barrel7.png"
-					"barrel8.png"
-					"barrel1.png"// Loop back to beginning and clamp there.
+					{
+						AnimationFiles
+						[
+							"weapon_1.png"
+							"weapon_2.png"
+							"weapon_3.png"
+							"weapon_4.png"
+							"weapon_3.png"
+							"weapon_2.png"
+						]
+						Size = [2, 3]
+						AnimationInterval = 0.01
+					}
 				]
-				Size = [2, 3]
-				AnimationInterval = 0.0625
-				AnimationStartTime = MinValue
-				ClampAnimation = true
+			}
+			NonOperationalDoodad
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "weapon_off.png"
+						Size = [2, 3]
+					}
+				]
 			}
 		}
 		
@@ -534,7 +522,7 @@ Part : /BASE_PART
 	StatsByCategory
 	[
 		{
-			NameKey = "StatCategories/TractorBeamPull"
+			NameKey = "CdRMoteer/Armory/StatCategories/BulletRedirectorCannonPull"
 			Stats
 			{
 				ImpulsePerShot = &~/Part/Components/PullComponents/Components/BeamEmitter/TractorImpulse
@@ -549,7 +537,7 @@ Part : /BASE_PART
 			}
 		}
 		{
-			NameKey = "StatCategories/TractorBeamPush"
+			NameKey = "CdRMoteer/Armory/StatCategories/BulletRedirectorCannonPush"
 			Stats
 			{
 				ImpulsePerShot = &~/Part/Components/PushComponents/Components/BeamEmitter/TractorImpulse
@@ -564,5 +552,5 @@ Part : /BASE_PART
 		}
 	]
 
-	StatsNotesKey = "Stats/TractorBeamNotes"
+	StatsNotesKey = "CdRMoteer/Armory/Stats/BulletRedirectorCannonNotes"
 }

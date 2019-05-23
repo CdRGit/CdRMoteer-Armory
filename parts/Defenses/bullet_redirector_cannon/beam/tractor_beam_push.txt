@@ -93,7 +93,7 @@ HitOperational
 	[		
 		{
 			Type = AreaImpulse
-			Impulse = -(&~/TractorImpulse) / 2
+			Impulse = (&~/TractorImpulse)
 			Radius = 30
 			Filter
 			{

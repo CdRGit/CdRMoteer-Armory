@@ -48,6 +48,8 @@ CdRMoteer
 			HellbringerSmall = "Small Hellbringer Cannon Bullet"
 			ElectroMagneticField = "Electro-Magnetic Field"
 			ElectroMagneticCannon = "Electro-Magnetic Cannon Beam"
+			BulletRedirectorCannonPull = "Bullet Redirector Cannon: Pull"
+			BulletRedirectorCannonPush = "Bullet Redirector Cannon: Push"
 		}
 
 		Stats
@@ -56,6 +58,8 @@ CdRMoteer
 			PowerDrainPerFieldSecondFmt = "<white>Power Drain Within Field:</white> <good>{0:0.##########}</good><gray>/sec (assuming field is running at full capacity)</gray>"
 			
 			WeakForceFmt = "<white>Force:</white> <good>{0:#,0.#}</good><gray> newtons</gray>"
+			
+			BulletRedirectorCannonNotes = "<gray>NOTE: Pull force and power usage is at maximum range. Push force and power usage is at minimum range.\nNote: Pull attracts to the end of the beam, Push repels from the end of the beam.</gray>"
 		}
 	
 		EditorGroups
