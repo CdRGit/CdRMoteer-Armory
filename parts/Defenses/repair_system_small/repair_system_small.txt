@@ -381,8 +381,14 @@ Part : /BASE_PART
 			Interval = 0.5
 		}
 	}
-	Stats
-	{
+	StatsByCategories
+	[
+		{
+			NameKey = "CdRMoteer/Armory/StatCategories/RepairSystem"
+			Stats
+			{
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
-	}
+			}
+		}
+	]
 }

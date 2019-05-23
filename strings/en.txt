@@ -41,6 +41,10 @@ CdRMoteer
 			ElectroMagneticCannon = "Electro-Magnetic Cannon"
 			ElectroMagneticCannonIcon = "Electro Cannon"
 			ElectroMagneticCannonDesc = "The <good>Electro-Magnetic Cannon</good> can drain a bit of energy from enemy ships in the area where it impacts.\n\n'Cool crew don't look at EMP's' - DARKNESSRY"
+			
+			BulletRedirectorCannon = "Bullet Redirector Cannon"
+			BulletRedirectorCannonIcon = "Redirector Cannon"
+			BulletRedirectorCannonDesc = "The <good>Bullet Redirector Cannon</good> is capable of slowing projectiles to a halt and keeping them away from your ship.\n\n'yeet bullets outta your way' - \"Star\""
 		}
 		
 		StatCategories
@@ -50,6 +54,7 @@ CdRMoteer
 			ElectroMagneticCannon = "Electro-Magnetic Cannon Beam"
 			BulletRedirectorCannonPull = "Bullet Redirector Cannon: Pull"
 			BulletRedirectorCannonPush = "Bullet Redirector Cannon: Push"
+			RepairSystem = "Repair System"
 		}
 
 		Stats

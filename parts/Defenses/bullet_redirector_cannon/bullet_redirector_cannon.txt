@@ -1,10 +1,10 @@
 Part : /BASE_PART
 {
-	NameKey = "CdRMoteer/Armory/Temp"
-	IconNameKey = "CdRMoteer/Armory/Temp"
+	NameKey = "CdRMoteer/Armory/Parts/BulletRedirectorCannon"
+	IconNameKey = "CdRMoteer/Armory/Parts/BulletRedirectorCannonIcon"
 	ID = cdrmoteer.armory.bullet_redirector_cannon
 	EditorGroups = ["WeaponsEnergy", "Defenses","CdRMoteerArmory"]
-	DescriptionKey = "CdRMoteer/Armory/Temp"
+	DescriptionKey = "CdRMoteer/Armory/Parts/BulletRedirectorCannonDesc"
 	Cost = 6000
 	AIValue = 10
 	TypeCategories = [defense, uses_power, is_crewed]
@@ -431,7 +431,7 @@ Part : /BASE_PART
 		{
 			Type = AmmoSprites
 			ChainedTo = Turret
-			Location = [.5, 0]
+			Location = [.25, 0]
 			Rotation = 90d
 			AmmoStorage = BatteryStorage
 			Layer = "doodads_low"
@@ -439,6 +439,10 @@ Part : /BASE_PART
 			[
 				{
 					File = "battery1.png"
+					Size = [2, 3]
+				}
+				{
+					File = "battery2.png"
 					Size = [2, 3]
 				}
 			]
