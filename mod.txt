@@ -1,10 +1,13 @@
 ID = cdrmoteer.armory
 Name = "CdRMoteer's Armory"
 Version = 1.0.0
-CompatibleGameVersions = ["0.14.5","0.14.6"]
+CompatibleGameVersions = ["0.14.10"]
 ModifiesMultiplayer = true
 Author = "CdRMoteer"
-Description = "This mod adds weapons, defenses and other items!"
+Description = "This mod adds weapons, defenses and other items!\n"\
+"Credits: \n"\
+"\t<good>CdRMoteer:</good> Programmer\n"\
+"\t<good>Drakador:</good> Part group icon\n"
 StringsFolder = "strings"
 Actions
 [
@@ -39,16 +42,52 @@ Actions
 		AddTo = "<gui/game/parts/part_toggles.txt>/PartToggles"
 		ManyToAdd = &<gui/buttons.txt>/Toggles
 	}
-	// Add Targetable to PD shot
+	// Indicators
 	{
 		Action = Add
-		AddTo = "<shots/pd_shot/pd_shot.txt>/Components"
-		Name = CdRMoteerTargetable
-		ToAdd
-		{
-			Type = Targetable
-			Health = 100
-			TargetCategory = "cdrmoteer_counter_measure"
-		}
+		AddTo = "<gui/game/indicators/indicators.txt>"
+		Name = "RepairWarning"
+		ToAdd = &<gui/indicators.txt>/Indicators/0
 	}
+	{
+		Action = Add
+		AddTo = "<gui/game/indicators/indicators.txt>"
+		Name = "RepairEmergency"
+		ToAdd = &<gui/indicators.txt>/Indicators/1
+	}
+	// Add Stats
+	{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_stats.txt>/PartStats"
+		ManyToAdd = &<gui/stats.txt>/Stats
+	}
+	/*
+		Not currently needed
+	// Render Layers
+	{
+		Action = AddMany
+		AddTo = "<ships/terran/terran.txt>/Terran/RenderLayers"
+		ManyToAdd = 
+		[
+			// Below Floors.
+			{
+				Key = "cdrmoteer_below_floors"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = -500
+					RenderStage = Lower
+					DrawWithShipGhost = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./Data/ships/common/parts.shader"
+					}
+				}
+			}
+		]
+	}
+	*/
 ]

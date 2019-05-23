@@ -1,0 +1,150 @@
+Type = Particles
+Def
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = LocationToWorldSpace
+			LocationIn = location
+			LocationOut = location
+			Name = "Location to world space"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = AddFrameOfReference
+			Name = "Add frame of reference"
+			VelocityInOut = velocity
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScaleFromIntensity
+			ScaleOut = scale
+			ScaleFactor = 13
+			IntensityExponent = 0.5
+			Name = "Scale from intensity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Updaters
+	[
+		{
+			Type = Lifetime
+			LifeInOut = life
+			Lifetime = 0.8
+			Name = Lifetime
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2D
+			AIn = location
+			BIn = velocity
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Lerp
+			LerpIn = life
+			DataOut = color
+			Invert = false
+			ValueType = Color
+			FromValue
+			{
+				Rf = 0.8509804
+				Gf = 1
+				Bf = 0.0156862754
+				Af = 1
+			}
+			ToValue
+			{
+				Rf = 0.8509804
+				Gf = 1
+				Bf = 0.0156862754
+				Af = 0
+			}
+			Name = "Color lerp"
+			Enabled = true
+			UpdateAfterInit = true
+		}
+	]
+	Renderer
+	{
+		Type = StandardQuadRenderer
+		LocationIn = location
+		ScaleIn = scale
+		RotationIn
+		ColorIn = color
+		UvRectIn
+		BaseSize
+		{
+			X = 2
+			Y = 2
+		}
+		MaxScale = 1
+		Name = ""
+	}
+	Material
+	{
+		Shader = missile_emp_shockwave.shader
+		_shockwaveStrength = 1
+		Texture
+		{
+			File = ../../../common_effects/particles/shockwave.png
+			FixTransparentColors = false
+			PreMultiplyByAlpha = false
+			SampleMode = Linear
+			MipLevels = max
+		}
+		TargetBlendMode
+		{
+			SourceRgbFactor = SourceAlpha
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = InverseDestAlpha
+			DestAlphaFactor = One
+			AlphaOperator = Add
+			ChannelWriteMask
+			[
+				Red
+				Green
+				Blue
+				Alpha
+				All
+			]
+		}
+	}
+	DeleteMode = Fast
+	EnableMultithreading = false
+	InitCapacity = 256
+}
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 1
+	PreInitializers[]
+	PostInitializers[]
+}
+Bucket = Upper4
+PenetratingBucket
+MinIntensity = 0
+IsFancy = true
+Sharing = Global
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 5
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.40282347E+38
+ScaleEmissionWithIntensity = false
+Delay = 0
+IgnoreIntensity = false
+UnsharedRenderInWorldSpace = false
+ScaleEmissionWithBeamLength = false
+CaptureBackBuffer = true

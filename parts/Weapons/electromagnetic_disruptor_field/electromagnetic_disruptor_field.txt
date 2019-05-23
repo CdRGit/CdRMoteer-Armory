@@ -131,7 +131,7 @@ Part : /BASE_PART
 		{
 			Type = AmmoConsumer
 			AmmoType = cdrmoteer_internal
-			MaxAmmo = 100
+			MaxAmmo = 500
 			Priorities = {Low = 0, High = 0, Empty = 0}
 			JobUnassignThreshold = 1000000// Effectively unassignable.
 			ResupplyThreshold = 500
@@ -409,20 +409,28 @@ Part : /BASE_PART
 			File = "blueprints.png"
 			Size = [2, 2]
 		}
-
-		PowerUIStats
-		{
-			Type = UIStats
-			Stat = Power
-			Min = .02
-			Ideal = .02
-		}
-		CrewUIStats
-		{
-			Type = UIStats
-			Stat = Crew
-			Min = 1
-			Ideal = 1
-		}
 	}
+	
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
+
+		MinPower = (&../StatsByCategory/0/Stats/PowerPerSecond) / 2
+		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+		MinCrew = (&MinPower) * 2
+		RecCrew = (&RecPower) * 4
+	}
+	
+	StatsByCategory
+	[
+		{
+			NameKey = "CdRMoteer/Armory/StatCategories/ElectroMagneticField"
+			Stats
+			{
+				PowerPerSecond = (&<field_modes/continuous.txt>/Components/Emitter/AmmoUsed) / (&<field_modes/continuous.txt>/Components/Weapon/FireInterval) / 1000
+				PowerPerFieldDrain = ((&<field_modes/continuous.txt>/Components/Emitter/AmmoUsed) / (&<field_modes/ghost_shot_continuous.txt>/Components/Hit/HitFriendly/HitEffects/0/TotalDrain)) / (&<field_modes/continuous.txt>/Components/Weapon/FireInterval) / 200
+				PowerDrainPerFieldSecond = (&<field_modes/ghost_shot_continuous.txt>/Components/Hit/HitFriendly/HitEffects/0/TotalDrain) / (&<field_modes/continuous.txt>/Components/Weapon/FireInterval) / 1000
+			}
+		}
+	]
 }

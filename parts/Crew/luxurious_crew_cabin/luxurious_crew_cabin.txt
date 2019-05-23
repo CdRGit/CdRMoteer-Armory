@@ -1,0 +1,179 @@
+Part : /BASE_PART
+{
+	NameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabin"
+	IconNameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabinIcon"
+	ID = cdrmoteer.armory.luxurious_crew_cabin
+	EditorGroups = ["Crew", "CdRMoteerArmory"]
+	DescriptionKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabinDesc"
+	Cost = 1000
+	Size = [2, 3]
+	SelectionTypeID = "quarters"
+	MaxHealth = 6000
+	TypeCategories = [provides_crew]
+	CrewCapacity = 6
+	IgnoreRotationForMirroredSelection = false
+	CrewSpawnLocations
+	[
+		[1, 1]
+		[1, 1]
+		[1, 1]
+		[1, 1]
+		[1, 1]
+		[1, 1]
+	]
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[1, -1]
+		[-1, 0]
+		[2, 0]
+		[-1, 1]
+		[2, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [46, 69]
+	}
+	Components : ^/0/Components
+	{
+		CrewIdler
+		{
+			Type = CrewIdler
+			MaxCrew = 5
+			Buffer = .25
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_windows_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_windows_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "desk.png"
+						Size = [2, 3]
+					}
+				]
+			}
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [0.90, 2.5]
+			Rotation = 270d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			Priorities = &/PRIORITIES/Utility_Crew
+			CrewDestinations
+			[
+				[0.75, 2.5]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
+			Location = [1, 1.5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 3]
+		}
+	}
+}

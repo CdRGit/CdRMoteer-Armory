@@ -1,0 +1,23 @@
+Stats
+[
+	{
+		ID = PowerPerFieldDrain
+		FormatKey = "CdRMoteer/Armory/Stats/PowerPerFieldDrainFmt"
+	}
+	{
+		ID = PowerDrainPerFieldSecond
+		FormatKey = "CdRMoteer/Armory/Stats/PowerDrainPerFieldSecondFmt"
+	}
+	{
+		ID = WeakForce
+		FormatKey = "CdRMoteer/Armory/Stats/WeakForceFmt"
+	}
+	{
+		ID = RepairAmount
+		FormatKey = "CdRMoteer/Armory/Stats/RepairAmountFmt"
+	}
+	{
+		ID = RepairRadius
+		FormatKey = "CdRMoteer/Armory/Stats/RepairRadiusFmt"
+	}
+]

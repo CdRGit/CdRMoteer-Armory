@@ -2,6 +2,8 @@ CdRMoteer
 {
 	Armory
 	{
+		Temp = "You should not see this, if you do it means the developer is an idiot and didn't make the proper keys yet, bug him about it."
+	
 		Parts
 		{
 			ElectroMagneticField = "Electro-Magnetic Disruption Field"
@@ -15,6 +17,57 @@ CdRMoteer
 			BulletClipFactory = "Bullet Clip Factory"
 			BulletClipFactoryIcon = "Clip Factory"
 			BulletClipFactoryDesc = "The <good>Bullet Clip Factory</good> creates a clip with a lot of small bullets, perfect for guns that use small ammunition, like gatling guns!\n\n'Ammo Snek' - Ultra Blast"
+			
+			SpacetimeLooperSmall = "Small Spacetime Looper"
+			SpacetimeLooperSmallIcon = "Small Looper"
+			SpacetimeLooperSmallDesc = "The <good>Small Spacetime Looper</good> manipulates spacetime to move the ship around, it is great for maneuvering ships.\n\n'I have no idea why it works, it just does' - Engineer"
+			
+			LuxuriousCrewCabin = "Luxurious Crew Cabin"
+			LuxuriousCrewCabinIcon = "Deluxe Crew Cabin"
+			LuxuriousCrewCabinDesc = "The <good>Luxurious Crew Cabin</good> has beds for 6, and a desk for 1.\nNoone knows what he is writing.\n\n'Dank memeing' - ! ℋɵɭσℳλ☦Ϊ∁"
+			
+			RepairSystemSmall = "Small Repair System"
+			RepairSystemSmallIcon = "Small Repair System"
+			RepairSystemSmallDesc = "The <good>Small Repair System</good> repairs nearby parts by using nanobots.\n\n'That's no moon' - Obi-Wan Kenobi"
+			
+			ArmoredBulkheadSection = "Armored Bulkhead Section"
+			ArmoredBulkheadSectionIcon = "Bulkhead"
+			ArmoredBulkheadSectionDesc = "The <good>Armored Bulkhead Section</good> is meant to block fire from spreading between different modules, it also has emergency fire extinguishers.\n\n'It's the gateway to hell gentleman' - The insane man nextdoor"
+			
+			RapidFtlSystem = "Rapid FTL System"
+			RapidFtlSystemIcon = "Rapid FTL"
+			RapidFtlSystemDesc = "The <good>Rapid FTL System</good> is capable of engaging FTL within 4 seconds, as long as the crew charges it beforehand.\n\n'Gotta go fast' - Ilya246"
+			
+			ElectroMagneticCannon = "Electro-Magnetic Cannon"
+			ElectroMagneticCannonIcon = "Electro Cannon"
+			ElectroMagneticCannonDesc = "The <good>Electro-Magnetic Cannon</good> can drain a bit of energy from enemy ships in the area where it impacts.\n\n'Cool crew don't look at EMP's' - DARKNESSRY"
+			
+			BulletRedirectorCannon = "Bullet Redirector Cannon"
+			BulletRedirectorCannonIcon = "Redirector Cannon"
+			BulletRedirectorCannonDesc = "The <good>Bullet Redirector Cannon</good> is capable of slowing projectiles to a halt and keeping them away from your ship.\n\n'yeet bullets outta your way' - \"Star\""
+		}
+		
+		StatCategories
+		{
+			HellbringerSmall = "Small Hellbringer Cannon Bullet"
+			ElectroMagneticField = "Electro-Magnetic Field"
+			ElectroMagneticCannon = "Electro-Magnetic Cannon Beam"
+			BulletRedirectorCannonPull = "Bullet Redirector Cannon: Pull"
+			BulletRedirectorCannonPush = "Bullet Redirector Cannon: Push"
+			RepairSystem = "Repair System"
+		}
+
+		Stats
+		{
+			PowerPerFieldDrainFmt = "<white>Power Use:</white> <good>{0:0.##########}</good><gray>/sec/drain (assuming field is running at full capacity)</gray>"
+			PowerDrainPerFieldSecondFmt = "<white>Power Drain Within Field:</white> <good>{0:0.##########}</good><gray>/sec (assuming field is running at full capacity)</gray>"
+			
+			WeakForceFmt = "<white>Force:</white> <good>{0:#,0.#}</good><gray> newtons</gray>"
+			
+			RepairAmountFmt = "<white>Repair Amount:</white> <good>{0:0.##}</good><gray>/batch (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+			RepairRadiusFmt = "<white>Repair Radius:</white> <good>{0:0.##}</good><gray>m</gray>"
+			
+			BulletRedirectorCannonNotes = "<gray>NOTE: Pull force and power usage is at maximum range. Push force and power usage is at minimum range.\nNote: Pull attracts to the end of the beam, Push repels from the end of the beam.</gray>"
 		}
 	
 		EditorGroups

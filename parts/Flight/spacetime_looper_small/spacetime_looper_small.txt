@@ -1,10 +1,10 @@
 Part : /BASE_PART
 {
-	NameKey = "Parts/FtlDrive"
-	IconNameKey = "Parts/FtlDriveIcon"
+	NameKey = "CdRMoteer/Armory/Parts/SpacetimeLooperSmall"
+	IconNameKey = "CdRMoteer/Armory/Parts/SpacetimeLooperSmallIcon"
 	ID = cdrmoteer.armory.spacetime_looper_small
 	EditorGroups = ["Flight","CdRMoteerArmory"]
-	DescriptionKey = "Parts/FtlDriveDesc"
+	DescriptionKey = "CdRMoteer/Armory/Parts/SpacetimeLooperSmallDesc"
 	Cost = 2500
 	Size = [1, 1]
 	SelectionPriority = 0
@@ -90,6 +90,7 @@ Part : /BASE_PART
 						]
 						Size = [1, 1]
 						AnimationInterval = 0.15
+						RotSpeed = 30d
 					}
 				]
 			}
@@ -146,6 +147,7 @@ Part : /BASE_PART
 						]
 						Size = [1, 1]
 						AnimationInterval = 0.15
+						RotSpeed = 30d
 					}
 				]
 			}
@@ -227,27 +229,10 @@ Part : /BASE_PART
 			ActivationIncreaseTime = 0
 			ActivationRecoveryTime = 0
 			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = 110
+			FuelUsagePerSecond = 50
 		}
 
 		LeftThruster
-		{
-			Type = Thruster
-			Location = [0.5, 0.5]// Relative to upper-left corner of unrotated part.
-			Rotation = 0d// Relative to unrotated part.
-			OperationalToggle = IsOperational
-			Force = 100
-			MinActivation = 0
-			MaxActivation = 1
-			MinUncommandedActivation = 0
-			MaxUncommandedActivation = 1
-			ActivationIncreaseTime = 0
-			ActivationRecoveryTime = 0
-			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = 100
-		}
-
-		RightThruster
 		{
 			Type = Thruster
 			Location = [0.5, 0.5]// Relative to upper-left corner of unrotated part.
@@ -261,7 +246,24 @@ Part : /BASE_PART
 			ActivationIncreaseTime = 0
 			ActivationRecoveryTime = 0
 			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = 100
+			FuelUsagePerSecond = 40
+		}
+
+		RightThruster
+		{
+			Type = Thruster
+			Location = [0.5, 0.5]// Relative to upper-left corner of unrotated part.
+			Rotation = 0d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = 100
+			MinActivation = 0
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 1
+			ActivationIncreaseTime = 0
+			ActivationRecoveryTime = 0
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = 40
 		}
 
 		ReverseThruster
@@ -278,7 +280,7 @@ Part : /BASE_PART
 			ActivationIncreaseTime = 0
 			ActivationRecoveryTime = 0
 			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = 100
+			FuelUsagePerSecond = 40
 		}
 
 		OperationEffects
@@ -332,20 +334,16 @@ Part : /BASE_PART
 			File = "blueprints.png"
 			Size = [1, 1]
 		}
+	}
+	Stats
+	{
+		ThrusterForce = &~/Part/Components/MainThruster/Force
+		ThrusterPowerUsage = (&~/Part/Components/MainThruster/FuelUsagePerSecond) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
 
-		PowerUIStats
-		{
-			Type = UIStats
-			Stat = Power
-			Min = 1
-			Ideal = 1
-		}
-		CrewUIStats
-		{
-			Type = UIStats
-			Stat = Crew
-			Min = 0
-			Ideal = 2
-		}
+		MinPower = (&ThrusterPowerUsage) / 2
+		RecPower = &ThrusterPowerUsage
+		MinCrew = (&MinPower) * 2
+		RecCrew = (&RecPower) * 4
 	}
 }

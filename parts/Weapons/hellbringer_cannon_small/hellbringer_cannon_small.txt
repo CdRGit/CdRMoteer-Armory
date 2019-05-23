@@ -8,7 +8,7 @@ Part : /BASE_PART
 	DescriptionKey = "CdRMoteer/Armory/Parts/HellbringerSmallDesc"
 	Cost = 3000
 	AIValue = 10
-	TypeCategories = [weapon, uses_bullet_clips, is_crewed]
+	TypeCategories = [weapon, uses_bullet_clips, uses_power, is_crewed]
 	Size = [2, 2]
 	PhysicalRect = [0, 1, 2, 1]
 	SaveRect = &PhysicalRect
@@ -597,9 +597,12 @@ Part : /BASE_PART
 					TotalDamage = 10000
 					Radius = 4
 					Delay = .05
-					DamagesOperationalHealth = true
-					DamagesStructuralHealth = false
-					AllowFriendlyDamage = true
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
 					FireChancePerNDamage = 50%
 					NDamage = 1000
 				}
@@ -608,9 +611,12 @@ Part : /BASE_PART
 					TotalDamage = 2000
 					Radius = 3
 					Delay = .05
-					DamagesOperationalHealth = false
-					DamagesStructuralHealth = true
-					AllowFriendlyDamage = true
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
 				}
 			]
 		}
@@ -671,13 +677,45 @@ Part : /BASE_PART
 			Size = [2, 3]
 			Offset = [0, -.5]
 		}
-
-		CrewUIStats
-		{
-			Type = UIStats
-			Stat = Crew
-			Min = 1
-			Ideal = 2.5
-		}
 	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		AmmoCapacity = (&~/Part/Components/AmmoStorage/MaxAmmo) + (&~/Part/Components/LoadedAmmo/MaxAmmo)
+
+		MinPower = (&../StatsByCategory/0/Stats/PowerPerSecond) / 2
+		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+		MinAmmo = (&../StatsByCategory/0/Stats/AmmoPerSecond) / 2
+		RecAmmo = &../StatsByCategory/0/Stats/AmmoPerSecond
+		MinCrew = (&CrewRequired) + (&MinAmmo) * 1
+		RecCrew = (&CrewRequired) + (&RecAmmo) * 2
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "CdRMoteer/Armory/StatCategories/HellbringerSmall"
+			Stats
+			{
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
+				DamagePerSecond = (&DamagePerShot) * (&ROF)
+				Damage = [&../DamagePerShot, &../DamagePerSecond]
+				Penetration = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration
+				FireChance = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/PenetratingOperational/HitEffects/1/FireChance) * 100
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				Range = &~/Part/Components/BulletEmitter/Bullet/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
+				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
+				AmmoPerShot = &~/Part/Components/BulletEmitter/AmmoUsage/0/AmmoUsed
+				PowerPerShot = (&~/Part/Components/BulletEmitter/AmmoUsage/0/AmmoUsed) / 1000
+				PowerPerSecond = (&PowerPerShot) * (&ROF)
+				AmmoPerSecond = (&AmmoPerShot) * (&ROF)
+				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]
+			}
+		}
+	]
 }

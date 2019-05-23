@@ -1,0 +1,122 @@
+Range = 200
+StretchRange = 200
+IdealRange = 200
+Duration = .25
+HitInterval = 1 / (&<./Data/rules.txt>/Simulation/PhysicsUpdatesPerSecond)
+TractorImpulse = 0.005 * (&HitInterval) // Actual impulse per-ship is half; this is net total of both ships.
+HitEffectsScaleOverRange = [.1, 1]
+MediaEffectsScaleOverRange = [.1, 1]
+KeepLengthWhenHitNothing = true
+ShieldCollisions = { HitsEnemyShields=false; }
+ClipRangeToTarget = true
+
+BeamMediaEffects
+[
+	{
+		Type = Beam
+		IsFancy = true
+		BeamSprite
+		{
+			Texture
+			{
+				File = "beam_base.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Shader = "tractor_beam.shader"
+			Size = [1, 0] // Only width matters.
+			VertexColor = [255, 255, 255, 255]
+
+			_displacement
+			{
+				File = "displacement.png"
+				SampleMode = Linear
+				MipLevels = max
+				UMode = Wrap
+				VMode = Clamp
+			}
+			_displacementStrength = 10
+			_displacementSpeed = .25
+
+			_fullIntensityThickness = .2
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		AlphaOverIntensity = [.5, 1]
+		SpeedOverIntensity = [1, 5]
+		Bucket = Upper1
+		CaptureBackBuffer = true
+		ExtraBeginLength = .5
+		ExtraEndLength = 1
+	}
+
+	: 0 
+	{
+		IsFancy = false
+		IsSimple = true
+		BeamSprite : ^/0/BeamSprite
+		{
+			Shader = "tractor_beam_simple.shader"
+		}
+		CaptureBackBuffer = false
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "tractor_beam_emit.wav"
+		Volume = 1
+		MaxConcurrent = 0 // Unlimited
+		MaxConcurrentVolume = 1
+		RampUpTime = .25
+		RampDownTime = .25
+		VolumeOverIntensity = 1
+		SpeedOverIntensity = [1, 2]
+		RampAffectsSpeedIntensity = true
+		EndContinuousImmediately = true
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "tractor_beam.wav"
+		Volume = 1
+		MaxConcurrent = 0 // Unlimited
+		MaxConcurrentVolume = 1
+		RampUpTime = .25
+		RampDownTime = .25
+		VolumeOverIntensity = 1
+		SpeedOverIntensity = [1, 2]
+		RampAffectsSpeedIntensity = true
+		EndContinuousImmediately = true
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+
+HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = AreaImpulse
+			Impulse = -(&~/TractorImpulse)
+			Radius = 30
+			Filter
+			{
+				Ships = false
+				Shields = false
+				Bullets = true
+				OnlyBulletCategories = [missile, bullet, mine]
+			}
+		}
+	]
+}
+
+HitStructural = &HitOperational
+HitNothing = &HitOperational

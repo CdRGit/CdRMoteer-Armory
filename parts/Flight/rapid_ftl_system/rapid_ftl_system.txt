@@ -1,0 +1,471 @@
+Part : /BASE_PART
+{
+	NameKey = "CdRMoteer/Armory/Parts/RapidFtlSystem"
+	IconNameKey = "CdRMoteer/Armory/Parts/RapidFtlSystemIcon"
+	DescriptionKey = "CdRMoteer/Armory/Parts/RapidFtlSystemDesc"
+	ID = cdrmoteer.armory.rapid_ftl_system
+	EditorGroups = ["CdRMoteerArmory", "Flight"]
+	Cost = 15000
+	Size = [2, 2]
+	SelectionPriority = 0
+	MaxHealth = 4000
+	AutoDoorMaxPathLength = 5
+	TypeCategories = [ftl, uses_power] // 'ftl' is a magic category that allows the FTL overlay to efficiently find FTL drives.
+	IgnoreRotationForSelection = true
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+		[0, 2]
+		[1, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+		}
+
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 16000
+			InitToMaxAmmo = 0
+			Priorities = &/PRIORITIES/Ftl_Supply
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			AmmoDesireToggle = PowerToggle
+			AllowMinPriorityUndesiredAmmo = false
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		ChargeStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = cdrmoteer_internal
+			MaxAmmo = 100
+			InitToMaxAmmo = 0
+			Priorities = &/PRIORITIES/Ftl_Supply
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			AmmoDesireToggle = PowerToggle
+			AllowMinPriorityUndesiredAmmo = false
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		FtlCharger
+		{
+			Type = AmmoConverter
+			OperationalToggle = FtlDrive
+			FromStorage = BatteryStorage
+			ToStorage = ChargeStorage
+			FromQuantity = 160
+			ToQuantity = 1
+			Interval = 0.04
+		}
+
+		ChargeProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = PowerToggle
+			ShowProgressFor = FtlDrive
+			LowColor = [0, 0, 0]
+			HighColor = [0, 61, 122]
+			FullColor = [0, 122, 255]
+			Height = 10
+		}
+
+		FtlDrive
+		{
+			Type = FtlDrive
+			OperationalToggle = PowerToggle
+			AmmoStorage = ChargeStorage
+			SpinDownDuration = 20
+			JumpEfficiencyDistanceRange = [10, 25]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = PowerToggle
+			AnimationSpeedFactor = FtlDrive
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.00625
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"roof_doodads_on1.png"
+							"roof_doodads_on2.png"
+							"roof_doodads_on3.png"
+							"roof_doodads_on4.png"
+							"roof_doodads_on5.png"
+							"roof_doodads_on6.png"
+							"roof_doodads_on7.png"
+							"roof_doodads_on8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.00625
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_doodads_off.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_on.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_on_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_on_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_off.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_off_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_off_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		FtlSpin
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			FactorMediaEffectsIntensityWith = FtlDrive
+			OperationalToggle = PowerToggle
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "ftl_spin.wav"
+					Volume = 20
+					Speed = 1
+					MaxConcurrent = 0
+					VolumeOverIntensity = [0, 20]
+					SpeedOverIntensity = 1
+				}
+			]
+		}
+
+		ChargeSprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = ChargeStorage
+			Layer = "doodads_high"
+			HasZeroAmmoSprite = true
+			AmmoLevels
+			[
+				{
+					File = "charge0.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge4.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge5.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge6.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge7.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge8.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge9.png"
+					Size = [2, 2]
+				}
+				{
+					File = "charge10.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_high"
+			HasZeroAmmoSprite = true
+			AmmoLevels
+			[
+				{
+					File = "power0.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power4.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power5.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power6.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power7.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power8.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power9.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power10.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power11.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power12.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power13.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power14.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power15.png"
+					Size = [2, 2]
+				}
+				{
+					File = "power16.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = PowerToggle
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 2]
+		}
+	}
+
+	Stats
+	{
+		FtlMaxEfficiencyRange = &~/Part/Components/FtlDrive/JumpEfficiencyDistanceRange/0
+		FtlMinEfficiencyRange = &~/Part/Components/FtlDrive/JumpEfficiencyDistanceRange/1
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
+	}
+}

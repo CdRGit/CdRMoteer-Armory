@@ -17,12 +17,9 @@ Components
 			{
 				Type = ExplosiveAmmoDrain
 				AmmoType = battery
-				TotalDrain = 50000
+				TotalDrain = 250000
 				Radius = 500
 				Slices = 1
-				AllowFriendlyDrain = false
-				DrainsParts = true
-				DrainsShields = true
 				MediaEffectsOnDrainFactor = .00025
 				MediaEffectsOnDrain
 				[
@@ -35,16 +32,19 @@ Components
 						SpeedVariation = .2
 					}
 				]
+				Filter
+				{
+					Ships = true
+					Shields = true
+					Friendlies = true
+				}
 			}
 			{
 				Type = ExplosiveAmmoDrain
 				AmmoType = battery
-				TotalDrain = 25000
+				TotalDrain = 125000
 				Radius = 500
 				Slices = 1
-				AllowFriendlyDrain = true
-				DrainsParts = true
-				DrainsShields = true
 				MediaEffectsOnDrainFactor = .00025
 				MediaEffectsOnDrain
 				[
@@ -57,12 +57,22 @@ Components
 						SpeedVariation = .2
 					}
 				]
+				Filter
+				{
+					Ships = true
+					Shields = true
+					Friendlies = true
+				}
 			}
 			{
 				Type = AmmoDrain
 				AmmoType = cdrmoteer_internal
-				Amount = 100
-				AllowFriendlyDrain = true
+				Amount = 500
+				Filter
+				{
+					Ships = true
+					Friendlies = true
+				}
 			}
 		]
 	}
