@@ -15,6 +15,7 @@ Parts
 	
 	// Defenses
 	&<Defenses/repair_system_small/repair_system_small.txt>/Part
+	&<Defenses/repair_system_standard/repair_system_standard.txt>/Part
 	&<Defenses/armored_bulkhead_section/armored_bulkhead_section.txt>/Part
 	&<Defenses/bullet_redirector_cannon/bullet_redirector_cannon.txt>/Part
 	

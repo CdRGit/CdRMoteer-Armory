@@ -1,0 +1,393 @@
+Part : /BASE_PART
+{
+	NameKey = "CdRMoteer/Armory/Parts/RepairSystemSmall"
+	IconNameKey = "CdRMoteer/Armory/Parts/RepairSystemSmallIcon"
+	ID = cdrmoteer.armory.repair_system_standard
+	EditorGroups = ["Defenses","CdRMoteerArmory"]
+	DescriptionKey = "CdRMoteer/Armory/Parts/RepairSystemSmallDesc"
+	Cost = 12000
+	Size = [2, 2]
+	SelectionPriority = 0
+	MaxHealth = 4000
+	AutoDoorMaxPathLength = 5
+	SelectionTypeByRotation = true
+	TypeCategories = [defense, uses_power]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[0, 3]
+		[1, 3]
+		[2, 1]
+	]
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Mode = All
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+		}
+
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 4000
+			Priorities = &/PRIORITIES/Thruster_Supply
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 500
+			AmmoDesireToggle = PowerToggle
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_on.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_on_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_on_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_off.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_off_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_off_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, -1]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"roof_doodads_on1.png"
+							"roof_doodads_on2.png"
+							"roof_doodads_on3.png"
+							"roof_doodads_on4.png"
+							"roof_doodads_on5.png"
+							"roof_doodads_on6.png"
+							"roof_doodads_on7.png"
+							"roof_doodads_on8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, -1]
+				DamageLevels
+				[
+					{
+						File = "roof_doodads_off.png"
+						Size = [2, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on_1.png"
+							"doodads_on_2.png"
+							"doodads_on_3.png"
+							"doodads_on_4.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.25
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [1, 1.25]
+			Rotation = 180d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			Priorities = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [BatteryStorage, PowerToggle]
+			CrewDestinations
+			[
+				&../../CrewLocation/Location
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "battery1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "battery2.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = PowerToggle
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 2]
+		}
+		RepairEffects
+		{
+			Type = TriggeredEffects
+			Location = [1, 1]
+			Trigger = RepairTrigger
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = -2000
+					Radius = 15
+					ExpandDuration = .1
+					ExpandStartRadius = 2
+					Filter
+					{
+						Friendlies = true
+						Enemies = false
+					}
+				}
+			]
+			MediaEffects
+			[
+				&<particles/nanobots.txt>
+				&<particles/smoke.txt>
+			]
+		}
+		
+		RepairTrigger
+		{
+			Type = AmmoConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 150
+			Interval = 0.5
+		}
+	}
+	StatsByCategory
+	[
+		{
+			NameKey = "CdRMoteer/Armory/StatCategories/RepairSystem"
+			Stats
+			{
+				PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
+				RepairPerBatch = -(&~/Part/Components/RepairEffects/HitEffects/0/TotalDamage)
+				RepairPerSec = -(&~/Part/Components/RepairEffects/HitEffects/0/TotalDamage) / (&~/Part/Components/RepairTrigger/Interval)
+				RepairAmount = [&../RepairPerBatch, &../RepairPerSec]
+				RepairRadius = &~/Part/Components/RepairEffects/HitEffects/0/Radius
+				PowerPerBatch = (&~/Part/Components/RepairTrigger/FromQuantity) / 1000
+				PowerPerSec = (&~/Part/Components/RepairTrigger/FromQuantity) / (&~/Part/Components/RepairTrigger/Interval) / 1000
+				RepairPowerUsage = [&../PowerPerBatch, &../PowerPerSec]
+			}
+		}
+	]
+}
