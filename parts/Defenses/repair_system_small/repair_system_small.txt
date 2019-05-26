@@ -336,15 +336,6 @@ Part : /BASE_PART
 			File = "blueprints.png"
 			Size = [1, 2]
 		}
-		
-		RepairTrigger
-		{
-			Type = Timer
-			OperationalToggle = IsOperational
-			Duration = 1
-			AutoStart = true
-			Repeats = true
-		}
 		RepairEffects
 		{
 			Type = TriggeredEffects
@@ -372,7 +363,7 @@ Part : /BASE_PART
 			]
 		}
 		
-		PowerDrain
+		RepairTrigger
 		{
 			Type = AmmoConverter
 			OperationalToggle = IsOperational
@@ -389,9 +380,12 @@ Part : /BASE_PART
 			{
 				PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
 				RepairPerBatch = -(&~/Part/Components/RepairEffects/HitEffects/0/TotalDamage)
-				RepairPerSec = -(&~/Part/Components/RepairEffects/HitEffects/0/TotalDamage) / (&~/Part/Components/RepairTrigger/Duration)
+				RepairPerSec = -(&~/Part/Components/RepairEffects/HitEffects/0/TotalDamage) / (&~/Part/Components/RepairTrigger/Interval)
 				RepairAmount = [&../RepairPerBatch, &../RepairPerSec]
 				RepairRadius = &~/Part/Components/RepairEffects/HitEffects/0/Radius
+				PowerPerBatch = (&~/Part/Components/RepairTrigger/FromQuantity) / 1000
+				PowerPerSec = (&~/Part/Components/RepairTrigger/FromQuantity) / (&~/Part/Components/RepairTrigger/Interval) / 1000
+				RepairPowerUsage = [&../PowerPerBatch, &../PowerPerSec]
 			}
 		}
 	]

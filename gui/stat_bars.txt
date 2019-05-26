@@ -1,0 +1,19 @@
+StatBars
+[
+	{
+		NameKey = "CdRMoteer/Armory/StatBars/BulletClips"
+		Icon
+		{
+			Texture
+			{
+				File = "clip_bar.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+		MinStat = MinClips
+		RecommendedStat = RecClips
+		ProvidedStat = ClipProduction
+		RoundUp = true
+	}
+]

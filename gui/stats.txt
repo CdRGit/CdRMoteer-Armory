@@ -20,4 +20,12 @@ Stats
 		ID = RepairRadius
 		FormatKey = "CdRMoteer/Armory/Stats/RepairRadiusFmt"
 	}
+	{
+		ID = RepairPowerUsage
+		FormatKey = "CdRMoteer/Armory/Stats/RepairPowerUsageFmt"
+	}
+	{
+		ID = ClipProduction
+		FormatKey = "Stats/AmmoProductionFmt"
+	}
 ]

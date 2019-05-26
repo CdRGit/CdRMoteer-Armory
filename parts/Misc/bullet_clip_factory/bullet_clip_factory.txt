@@ -355,7 +355,7 @@ Part : /BASE_PART
 
 	Stats
 	{
-		AmmoProduction = (&~/Part/Components/AmmoConverter/ToQuantity) / (&~/Part/Components/AmmoConverter/Interval)
+		ClipProduction = (&~/Part/Components/AmmoConverter/ToQuantity) / (&~/Part/Components/AmmoConverter/Interval)
 		AmmoCapacity = &~/Part/Components/ClipStorage/MaxAmmo
 		PowerPerAmmo = (&~/Part/Components/AmmoConverter/FromQuantity) / (&~/Part/Components/AmmoConverter/ToQuantity) / 1000
 		PowerPerSecond = (&~/Part/Components/AmmoConverter/FromQuantity) / (&~/Part/Components/AmmoConverter/Interval) / 1000

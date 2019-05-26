@@ -686,10 +686,10 @@ Part : /BASE_PART
 
 		MinPower = (&../StatsByCategory/0/Stats/PowerPerSecond) / 2
 		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
-		MinAmmo = (&../StatsByCategory/0/Stats/AmmoPerSecond) / 2
-		RecAmmo = &../StatsByCategory/0/Stats/AmmoPerSecond
-		MinCrew = (&CrewRequired) + (&MinAmmo) * 1
-		RecCrew = (&CrewRequired) + (&RecAmmo) * 2
+		MinClips = (&../StatsByCategory/0/Stats/AmmoPerSecond) / 2
+		RecClips = &../StatsByCategory/0/Stats/AmmoPerSecond
+		MinCrew = (&CrewRequired) + (&MinClips) * 1
+		RecCrew = (&CrewRequired) + (&RecClips) * 2
 	}
 
 	StatsByCategory
@@ -703,7 +703,7 @@ Part : /BASE_PART
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				Penetration = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration
 				FireChance = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/PenetratingOperational/HitEffects/1/FireChance) * 100
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				ROF = (1 / (&~/Part/Components/Turret/FireInterval)) * (&~/Part/Components/BulletEmitter/Burst)
 				Range = &~/Part/Components/BulletEmitter/Bullet/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1)
@@ -711,7 +711,7 @@ Part : /BASE_PART
 				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
 				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
 				AmmoPerShot = &~/Part/Components/BulletEmitter/AmmoUsage/0/AmmoUsed
-				PowerPerShot = (&~/Part/Components/BulletEmitter/AmmoUsage/0/AmmoUsed) / 1000
+				PowerPerShot = (&~/Part/Components/BulletEmitter/AmmoUsage/1/AmmoUsed) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&ROF)
 				AmmoPerSecond = (&AmmoPerShot) * (&ROF)
 				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]

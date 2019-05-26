@@ -61,33 +61,9 @@ Actions
 		AddTo = "<gui/game/parts/part_stats.txt>/PartStats"
 		ManyToAdd = &<gui/stats.txt>/Stats
 	}
-	/*
-		Not currently needed
-	// Render Layers
 	{
 		Action = AddMany
-		AddTo = "<ships/terran/terran.txt>/Terran/RenderLayers"
-		ManyToAdd = 
-		[
-			// Below Floors.
-			{
-				Key = "cdrmoteer_below_floors"// Ship bucket layer.
-				Value // The actual material.
-				{
-					UniqueBucket = -500
-					RenderStage = Lower
-					DrawWithShipGhost = true
-					AtlasTextureParams
-					{
-						MipLevels = 7 // Assumes 64x64 min part sprite size.
-					}
-					Material
-					{
-						Shader = "./Data/ships/common/parts.shader"
-					}
-				}
-			}
-		]
+		AddTo = "<gui/game/designer/stat_bars.txt>/StatBars"
+		ManyToAdd = &<gui/stat_bars.txt>/StatBars
 	}
-	*/
 ]
