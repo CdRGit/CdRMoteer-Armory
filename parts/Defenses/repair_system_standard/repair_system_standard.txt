@@ -1,10 +1,10 @@
 Part : /BASE_PART
 {
-	NameKey = "CdRMoteer/Armory/Parts/RepairSystemSmall"
-	IconNameKey = "CdRMoteer/Armory/Parts/RepairSystemSmallIcon"
+	NameKey = "CdRMoteer/Armory/Parts/RepairSystemStandard"
+	IconNameKey = "CdRMoteer/Armory/Parts/RepairSystemStandardIcon"
 	ID = cdrmoteer.armory.repair_system_standard
 	EditorGroups = ["Defenses","CdRMoteerArmory"]
-	DescriptionKey = "CdRMoteer/Armory/Parts/RepairSystemSmallDesc"
+	DescriptionKey = "CdRMoteer/Armory/Parts/RepairSystemStandardDesc"
 	Cost = 12000
 	Size = [2, 2]
 	SelectionPriority = 0
@@ -160,7 +160,6 @@ Part : /BASE_PART
 			OperationalRoofDoodad
 			{
 				Layer = "roof_doodads"
-				Offset = [0, -1]
 				DamageLevels
 				[
 					{
@@ -175,7 +174,7 @@ Part : /BASE_PART
 							"roof_doodads_on7.png"
 							"roof_doodads_on8.png"
 						]
-						Size = [2, 2]
+						Size = [1, 2]
 						AnimationInterval = 0.1
 					}
 				]
@@ -183,12 +182,11 @@ Part : /BASE_PART
 			NonOperationalRoofDoodad
 			{
 				Layer = "roof_doodads"
-				Offset = [0, -1]
 				DamageLevels
 				[
 					{
 						File = "roof_doodads_off.png"
-						Size = [2, 2]
+						Size = [1, 2]
 						AnimationInterval = 0.1
 					}
 				]
@@ -214,8 +212,6 @@ Part : /BASE_PART
 						[
 							"doodads_on_1.png"
 							"doodads_on_2.png"
-							"doodads_on_3.png"
-							"doodads_on_4.png"
 						]
 						Size = [2, 2]
 						AnimationInterval = 0.25
@@ -238,7 +234,7 @@ Part : /BASE_PART
 		CrewLocation
 		{
 			Type = CrewLocation
-			Location = [1, 1.25]
+			Location = [1, .75]
 			Rotation = 180d
 		}
 		PartCrew
@@ -271,6 +267,14 @@ Part : /BASE_PART
 				}
 				{
 					File = "battery2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "battery3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "battery4.png"
 					Size = [2, 2]
 				}
 			]
