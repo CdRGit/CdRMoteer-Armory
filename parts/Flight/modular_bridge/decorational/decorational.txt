@@ -1,0 +1,88 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/Corridor"
+	IconNameKey = "Parts/CorridorIcon"
+	ID = cdrmoteer.armory.modular_bridge.decorational
+	DescriptionKey = "Parts/CorridorDesc"
+	Cost = 100
+	Size = [1, 1]
+	MaxHealth = 1000
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 1
+	TypeCategories = [corridor, modular_bridge_window]
+	IsRotateable = false
+	IsWalled = false
+	GeneratorRequiresDoor = false
+	CreatePassableHolesWhenDestroyed = true
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		WallsBlend : <./Data/ships/terran/walls/walls.txt>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+		WindowsBlend : <../windows/windows.txt>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [modular_bridge_window]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+
+		BlueprintWalls : <./Data/ships/terran/walls/blueprint walls.txt>
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+	}
+}
