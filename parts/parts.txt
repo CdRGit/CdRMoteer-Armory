@@ -28,6 +28,7 @@ Parts
 	
 	// Crew
 	&<Crew/luxurious_crew_cabin/luxurious_crew_cabin.txt>/Part
+	&<Crew/1_person_cabin/1_person_cabin.txt>/Part
 	
 	// Power
 	/*&<Power/advanced_generator_core/advanced_generator_core.txt>/Part*/

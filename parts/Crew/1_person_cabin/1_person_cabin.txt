@@ -1,25 +1,16 @@
 Part : /BASE_PART
 {
-	NameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabin"
-	IconNameKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabinIcon"
-	ID = cdrmoteer.armory.luxurious_crew_cabin
-	EditorGroups = ["Crew", "CdRMoteerArmory"]
-	DescriptionKey = "CdRMoteer/Armory/Parts/LuxuriousCrewCabinDesc"
-	Cost = 1000
-	Size = [2, 3]
+	NameKey = "CdRMoteer/Armory/Temp"
+	IconNameKey = "CdRMoteer/Armory/Temp"
+	DescKey = "CdRMoteer/Armory/Temp"
+	Id = "cdrmoteer.armory.1_person_cabin"
+	Cost = 4000
+	Size = [2, 2]
 	SelectionTypeID = "quarters"
-	MaxHealth = 6000
+	MaxHealth = 4000
 	TypeCategories = [provides_crew]
 	IgnoreRotationForMirroredSelection = false
-	AllowedDoorLocations
-	[
-		[0, -1]
-		[1, -1]
-		[-1, 0]
-		[2, 0]
-		[-1, 1]
-		[2, 1]
-	]
+	EditorGroups = ["Crew", "CdRMoteerArmory"]
 	EditorIcon
 	{
 		Texture
@@ -27,31 +18,26 @@ Part : /BASE_PART
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [46, 69]
+		Size = [64, 64]
 	}
 	Components : ^/0/Components
 	{
 		CrewSource
 		{
 			Type = CrewSource
-			Crew = 6
+			Crew = 1
 			IdleLocations
 			[
-				[.45, .55]
-				[1, .55]
-				[1.55, .55]
-				[.44, 1.45]
-				[1, 1.45]
-				[0.90, 2.5]
+				[1.5, .5]
 			]
-			ColorSRange = [0, 0.75]
-			ColorVRange = [0.5, 0.75]
+			ColorSRange = [0, 1]
+			ColorVRange = [0, 1]
 		}
 
 		Graphics
 		{
 			Type = Graphics
-			Location = [1, 1.5]
+			Location = [1, 1]
 			Floor
 			{
 				Layer = "floors"
@@ -59,15 +45,15 @@ Part : /BASE_PART
 				[
 					{
 						File = "floor.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 					{
 						File = "floor_33.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 					{
 						File = "floor_66.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 				]
 			}
@@ -78,15 +64,15 @@ Part : /BASE_PART
 				[
 					{
 						File = "walls.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 					{
 						File = "walls_33.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 					{
 						File = "walls_66.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 				]
 			}
@@ -97,15 +83,15 @@ Part : /BASE_PART
 				[
 					{
 						File = "roof.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 					{
 						File = "roof_33.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 					{
 						File = "roof_66.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 				]
 			}
@@ -116,15 +102,15 @@ Part : /BASE_PART
 				[
 					{
 						File = "roof_windows.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 					{
 						File = "roof_windows_33.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 					{
 						File = "roof_windows_66.png"
-						Size = [2, 3]
+						Size = [2, 2]
 					}
 				]
 			}
@@ -134,8 +120,8 @@ Part : /BASE_PART
 				DamageLevels
 				[
 					{
-						File = "desk.png"
-						Size = [2, 3]
+						File = "radio.png"
+						Size = [2, 2]
 					}
 				]
 			}
@@ -165,41 +151,31 @@ Part : /BASE_PART
 					}
 				]
 			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "radio_high.png"
+						Size = [2, 2]
+					}
+				]
+			}
 		}
-
-		/*CrewLocation
-		{
-			Type = CrewLocation
-			Location = [0.90, 2.5]
-			Rotation = 270d
-		}
-		PartCrew
-		{
-			Type = PartCrew
-			Crew = 1
-			Priorities = &/PRIORITIES/Utility_Crew
-			CrewDestinations
-			[
-				[0.75, 2.5]
-			]
-			CrewLocations
-			[
-				CrewLocation
-			]
-		}*/
 
 		DestroyedEffects
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
-			Location = [1, 1.5]
+			Location = [1, 1]
 		}
 
 		Blueprints
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [2, 3]
+			Size = [2, 2]
 		}
 	}
 }
