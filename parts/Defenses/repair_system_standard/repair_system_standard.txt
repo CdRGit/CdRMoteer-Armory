@@ -49,7 +49,7 @@ Part : /BASE_PART
 			Type = AmmoConsumer
 			AmmoType = battery
 			MaxAmmo = 4000
-			Priorities = &/PRIORITIES/Thruster_Supply
+			DefaultPriority = &/PRIORITIES/Thruster_Supply
 			JobUnassignThreshold = 1000000// Effectively unassignable.
 			ResupplyThreshold = 500
 			AmmoDesireToggle = PowerToggle
@@ -241,7 +241,7 @@ Part : /BASE_PART
 		{
 			Type = PartCrew
 			Crew = 1
-			Priorities = &/PRIORITIES/Weapon_Crew
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
 			PrerequisitesBeforeCrewing = [BatteryStorage, PowerToggle]
 			CrewDestinations
 			[

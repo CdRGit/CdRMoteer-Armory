@@ -119,7 +119,7 @@ Part : /BASE_PART
 			Type = AmmoConsumer
 			AmmoType = battery
 			MaxAmmo = 2000
-			Priorities = &/PRIORITIES/Weapon_Supply_Important
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			JobUnassignThreshold = 1000000// Effectively unassignable.
 			ResupplyThreshold = 500
 			AmmoDesireToggle = PowerToggle
@@ -132,7 +132,7 @@ Part : /BASE_PART
 			Type = AmmoConsumer
 			AmmoType = cdrmoteer_internal
 			MaxAmmo = 500
-			Priorities = {Low = 0, High = 0, Empty = 0}
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			JobUnassignThreshold = 1000000// Effectively unassignable.
 			ResupplyThreshold = 500
 			AmmoDesireToggle = PowerToggle
@@ -162,7 +162,7 @@ Part : /BASE_PART
 		{
 			Type = PartCrew
 			Crew = 1
-			Priorities = &/PRIORITIES/ControlRoom_Crew
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
 			PrerequisitesBeforeCrewing = [BatteryStorage, PowerToggle]
 			CrewDestinations
 			[

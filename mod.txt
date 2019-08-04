@@ -1,7 +1,7 @@
 ID = cdrmoteer.armory
 Name = "CdRMoteer's Armory"
-Version = 1.0.1
-CompatibleGameVersions = ["0.14.12"]
+Version = 1.0.2
+CompatibleGameVersions = ["0.15.0"]
 ModifiesMultiplayer = true
 Author = "CdRMoteer"
 Description = "This mod adds weapons, defenses and other items!\n"\

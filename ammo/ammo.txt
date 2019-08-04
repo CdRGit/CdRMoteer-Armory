@@ -2,6 +2,7 @@ Ammos
 [
 	{
 		ID = cdrmoteer_internal
+		NameKey = "CdRMoteer/Armory/Ammo/Internal"
 		MaxCarried = 0
 		CarriesMultiple = 0
 		CarriedSprite
@@ -17,6 +18,7 @@ Ammos
 	}
 	{
 		ID = cdrmoteer_bullet_clip
+		NameKey = "CdRMoteer/Armory/Ammo/BulletClip"
 		MaxCarried = 10
 		CarriesMultiple = 10
 		CarriedSprite

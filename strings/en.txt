@@ -4,6 +4,12 @@ CdRMoteer
 	{
 		Temp = "You should not see this, if you do it means the developer is an idiot and didn't make the proper keys yet, bug him about it."
 	
+		Ammo 
+		{
+			Internal = "Internal Ammo - Ignore this LMAO"
+			BulletClip = "Bullet Clip"
+		}
+	
 		Parts
 		{
 			ElectroMagneticField = "Electro-Magnetic Disruption Field"
@@ -48,7 +54,7 @@ CdRMoteer
 			
 			BulletRedirectorCannon = "Bullet Redirector Cannon"
 			BulletRedirectorCannonIcon = "Redirector Cannon"
-			BulletRedirectorCannonDesc = "The <good>Bullet Redirector Cannon</good> is capable of slowing projectiles to a halt and keeping them away from your ship.\n\n'yeet bullets outta your way' - \"Star\""
+			BulletRedirectorCannonDesc = "The <good>Bullet Redirector Cannon</good> is capable of slowing projectiles to a halt and keeping them away from your ship.\n\n'yeet bullets outta your way' - Star"
 		}
 		
 		StatCategories
@@ -111,5 +117,7 @@ Inputs
 		cdrmoteer_electromagnetic_disruption_mode_continuous = "Disruption Field Mode: Continuous"
 		cdrmoteer_electromagnetic_disruption_mode_pulse = "Disruption Field Mode: Pulse"
 		cdrmoteer_electromagnetic_disruption_mode_manual = "Disruption Field Mode: Manual"
+		cdrmoteer_bullet_redirector_mode_pull = "Bullet Redirector: Pull"
+		cdrmoteer_bullet_redirector_mode_push = "Bullet Redirector: Push"
 	}
 }

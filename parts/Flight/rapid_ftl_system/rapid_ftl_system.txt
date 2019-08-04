@@ -43,7 +43,7 @@ Part : /BASE_PART
 			AmmoType = battery
 			MaxAmmo = 16000
 			InitToMaxAmmo = 0
-			Priorities = &/PRIORITIES/Ftl_Supply
+			DefaultPriority = &/PRIORITIES/Ftl_Supply
 			JobUnassignThreshold = 1000000// Effectively unassignable.
 			AmmoDesireToggle = PowerToggle
 			AllowMinPriorityUndesiredAmmo = false
@@ -57,7 +57,7 @@ Part : /BASE_PART
 			AmmoType = cdrmoteer_internal
 			MaxAmmo = 100
 			InitToMaxAmmo = 0
-			Priorities = &/PRIORITIES/Ftl_Supply
+			DefaultPriority = &/PRIORITIES/Ftl_Supply
 			JobUnassignThreshold = 1000000// Effectively unassignable.
 			AmmoDesireToggle = PowerToggle
 			AllowMinPriorityUndesiredAmmo = false

@@ -41,11 +41,21 @@ Part : /BASE_PART
 	}
 	Components : ^/0/Components
 	{
-		CrewIdler
+		CrewSource
 		{
-			Type = CrewIdler
-			MaxCrew = 5
-			Buffer = .25
+			Type = CrewSource
+			Crew = 6
+			IdleLocations
+			[
+				[.45, .55]
+				[1, .55]
+				[1.55, .55]
+				[.44, 1.45]
+				[1, 1.45]
+				[0.90, 2.5]
+			]
+			ColorSRange = [0, 0.75]
+			ColorVRange = [0.5, 0.75]
 		}
 
 		Graphics
@@ -141,7 +151,33 @@ Part : /BASE_PART
 			}
 		}
 
-		CrewLocation
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			GetColorFrom = CrewSource
+			Floor
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "sheets.png"
+						Size = [2, 2]
+					}
+					{
+						File = "sheets_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "sheets_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		/*CrewLocation
 		{
 			Type = CrewLocation
 			Location = [0.90, 2.5]
@@ -160,7 +196,7 @@ Part : /BASE_PART
 			[
 				CrewLocation
 			]
-		}
+		}*/
 
 		DestroyedEffects
 		{

@@ -73,4 +73,41 @@ Toggles
 			}
 		]
 	}
+	// Tractor beam pull/push.
+	{
+		ToggleID = "cdrmoteer_bullet_redirector_mode"
+		Style = Popout
+		Choices
+		[
+			// Pull.
+			{
+				ChoiceID = "cdrmoteer_bullet_redirector_mode_pull"
+				ButtonToolTipKey = "PartToggles/TractorMode_Pull"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./Data/gui/game/parts/tractor_beam_pull.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Push.
+			{
+				ChoiceID = "cdrmoteer_bullet_redirector_mode_push"
+				ButtonToolTipKey = "PartToggles/TractorMode_Push"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./Data/gui/game/parts/tractor_beam_push.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 ]

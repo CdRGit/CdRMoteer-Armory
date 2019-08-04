@@ -24,7 +24,7 @@ Parts
 	&<Flight/rapid_ftl_system/rapid_ftl_system.txt>/Part
 	
 		// Modular Bridge
-		&<Flight/modular_bridge/decorational/decorational.txt>/Part
+		//&<Flight/modular_bridge/decorational/decorational.txt>/Part
 	
 	// Crew
 	&<Crew/luxurious_crew_cabin/luxurious_crew_cabin.txt>/Part

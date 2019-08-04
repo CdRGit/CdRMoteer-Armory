@@ -58,7 +58,7 @@ Part : /BASE_PART
 			Type = AmmoConsumer
 			AmmoType = battery
 			MaxAmmo = 2000
-			Priorities = &/PRIORITIES/Factory_Supply
+			DefaultPriority = &/PRIORITIES/Factory_Supply
 			JobUnassignThreshold = 1000000// Effectively unassignable.
 			ResupplyThreshold = 500
 			AmmoDesireToggle = PowerToggle
