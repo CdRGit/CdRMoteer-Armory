@@ -55,6 +55,10 @@ CdRMoteer
 			BulletRedirectorCannon = "Bullet Redirector Cannon"
 			BulletRedirectorCannonIcon = "Redirector Cannon"
 			BulletRedirectorCannonDesc = "The <good>Bullet Redirector Cannon</good> is capable of slowing projectiles to a halt and keeping them away from your ship.\n\n'yeet bullets outta your way' - Star"
+			
+			OnePersonCrewCabin = "1 Person Crew Cabin"
+			OnePersonCrewCabinIcon = "1 Man Cabin"
+			OnePersonCrewCabinDesc = "Do you have that one valued crew member in a special role? Do you want them to feel loved? Then get them the <good>1 Person Crew Cabin</good>!\n\n'Who needs friends when you've got money?' - TyphusTheNewbie"
 		}
 		
 		StatCategories

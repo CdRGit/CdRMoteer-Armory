@@ -1,8 +1,8 @@
 Part : /BASE_PART
 {
-	NameKey = "CdRMoteer/Armory/Temp"
-	IconNameKey = "CdRMoteer/Armory/Temp"
-	DescKey = "CdRMoteer/Armory/Temp"
+	NameKey = "CdRMoteer/Armory/Parts/OnePersonCrewCabin"
+	IconNameKey = "CdRMoteer/Armory/Parts/OnePersonCrewCabinIcon"
+	DescriptionKey = "CdRMoteer/Armory/Parts/OnePersonCrewCabinDesc"
 	Id = "cdrmoteer.armory.1_person_cabin"
 	Cost = 4000
 	Size = [2, 2]
