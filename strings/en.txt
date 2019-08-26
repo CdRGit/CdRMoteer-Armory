@@ -8,6 +8,7 @@ CdRMoteer
 		{
 			Internal = "Internal Ammo - Ignore this LMAO"
 			BulletClip = "Bullet Clip"
+			FTLCarrier = "FTL Carrier"
 		}
 	
 		Parts

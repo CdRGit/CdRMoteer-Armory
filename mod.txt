@@ -1,6 +1,6 @@
 ID = cdrmoteer.armory
 Name = "CdRMoteer's Armory"
-Version = 1.0.2
+Version = 1.0.3
 CompatibleGameVersions = ["0.15.0"]
 ModifiesMultiplayer = true
 Author = "CdRMoteer"

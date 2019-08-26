@@ -28,4 +28,21 @@ Ammos
 			Offset = [0, .25]
 		}
 	}
+	{
+		Id = cdrmoteer_ftl_carrier
+		NameKey = "CdRMoteer/Armory/Ammo/FTLCarrier"
+		CarriedSprite
+		{
+			AnimationFiles
+			[
+				"carrier1.png",
+				"carrier2.png",
+				"carrier3.png",
+				"carrier4.png"
+			]
+			AnimationInterval = 0.15
+			Size = [1, 1]
+			Offset = [0, .25]
+		}
+	}
 ]
