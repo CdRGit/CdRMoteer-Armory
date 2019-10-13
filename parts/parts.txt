@@ -12,7 +12,7 @@ Parts
 	
 	// Factory
 	&<Misc/bullet_clip_factory/bullet_clip_factory.txt>/Part
-	&<Misc/ftl_carrier_factory/ftl_carrier_factory.txt>/Part
+	//&<Misc/ftl_carrier_factory/ftl_carrier_factory.txt>/Part
 	
 	// Defenses
 	&<Defenses/repair_system_small/repair_system_small.txt>/Part

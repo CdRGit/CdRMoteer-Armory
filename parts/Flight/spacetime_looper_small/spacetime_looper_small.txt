@@ -40,14 +40,18 @@ Part : /BASE_PART
 
 		BatteryStorage
 		{
+			Type = AmmoStorage
+			AmmoType = battery
+			MaxAmmo = 8000
+		}
+		BatteryConsumer
+		{
 			Type = AmmoConsumer
 			AmmoType = battery
-			MaxAmmo = 2000
+			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Thruster_Supply
-			JobUnassignThreshold = 1000000// Effectively unassignable.
 			ResupplyThreshold = 500
-			AmmoDesireToggle = PowerToggle
-
+			OperationalToggle = PowerToggle
 			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 

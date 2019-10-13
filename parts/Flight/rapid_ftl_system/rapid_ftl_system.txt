@@ -39,30 +39,26 @@ Part : /BASE_PART
 
 		BatteryStorage
 		{
+			Type = AmmoStorage
+			AmmoType = battery
+			MaxAmmo = 1000
+		}
+		BatteryConsumer
+		{
 			Type = AmmoConsumer
 			AmmoType = battery
-			MaxAmmo = 16000
-			InitToMaxAmmo = 0
+			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Ftl_Supply
-			JobUnassignThreshold = 1000000// Effectively unassignable.
-			AmmoDesireToggle = PowerToggle
-			AllowMinPriorityUndesiredAmmo = false
-
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
 			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
 		ChargeStorage
 		{
-			Type = AmmoConsumer
+			Type = AmmoStorage
 			AmmoType = cdrmoteer_internal
 			MaxAmmo = 100
-			InitToMaxAmmo = 0
-			DefaultPriority = &/PRIORITIES/Ftl_Supply
-			JobUnassignThreshold = 1000000// Effectively unassignable.
-			AmmoDesireToggle = PowerToggle
-			AllowMinPriorityUndesiredAmmo = false
-
-			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
 		FtlCharger
