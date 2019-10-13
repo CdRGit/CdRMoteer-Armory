@@ -1,4 +1,4 @@
-Layer = "roof_windows"
+Layer = "roofs"
 AmbiguousSprites
 [
 	// No walls.

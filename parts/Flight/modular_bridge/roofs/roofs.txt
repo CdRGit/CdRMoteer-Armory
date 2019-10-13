@@ -153,7 +153,15 @@ AmbiguousSprites
 		DamageLevels
 		[
 			{
-				File = "window_07.png"
+				File = "roof_07.png"
+				Size = [1, 1]
+			}			
+			{
+				File = "roof_07_33.png"
+				Size = [1, 1]
+			}
+			{
+				File = "roof_07_66.png"
 				Size = [1, 1]
 			}
 		]
@@ -165,7 +173,15 @@ AmbiguousSprites
 		DamageLevels
 		[
 			{
-				File = "window_08.png"
+				File = "roof_08.png"
+				Size = [1, 1]
+			}			
+			{
+				File = "roof_08_33.png"
+				Size = [1, 1]
+			}
+			{
+				File = "roof_08_66.png"
 				Size = [1, 1]
 			}
 		]
@@ -177,7 +193,15 @@ AmbiguousSprites
 		DamageLevels
 		[
 			{
-				File = "window_09.png"
+				File = "roof_09.png"
+				Size = [1, 1]
+			}			
+			{
+				File = "roof_09_33.png"
+				Size = [1, 1]
+			}
+			{
+				File = "roof_09_66.png"
 				Size = [1, 1]
 			}
 		]
@@ -189,7 +213,15 @@ AmbiguousSprites
 		DamageLevels
 		[
 			{
-				File = "window_10.png"
+				File = "roof_10.png"
+				Size = [1, 1]
+			}			
+			{
+				File = "roof_10_33.png"
+				Size = [1, 1]
+			}
+			{
+				File = "roof_10_66.png"
 				Size = [1, 1]
 			}
 		]
@@ -201,7 +233,15 @@ AmbiguousSprites
 		DamageLevels
 		[
 			{
-				File = "window_11.png"
+				File = "roof_11.png"
+				Size = [1, 1]
+			}			
+			{
+				File = "roof_11_33.png"
+				Size = [1, 1]
+			}
+			{
+				File = "roof_11_66.png"
 				Size = [1, 1]
 			}
 		]
@@ -213,7 +253,15 @@ AmbiguousSprites
 		DamageLevels
 		[
 			{
-				File = "window_12.png"
+				File = "roof_12.png"
+				Size = [1, 1]
+			}			
+			{
+				File = "roof_12_33.png"
+				Size = [1, 1]
+			}
+			{
+				File = "roof_12_66.png"
 				Size = [1, 1]
 			}
 		]
@@ -225,7 +273,15 @@ AmbiguousSprites
 		DamageLevels
 		[
 			{
-				File = "window_13.png"
+				File = "roof_13.png"
+				Size = [1, 1]
+			}			
+			{
+				File = "roof_13_33.png"
+				Size = [1, 1]
+			}
+			{
+				File = "roof_13_66.png"
 				Size = [1, 1]
 			}
 		]
