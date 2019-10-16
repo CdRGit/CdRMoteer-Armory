@@ -126,6 +126,8 @@ Part : /BASE_PART
 							"doodads_on_4.png"
 							"doodads_on_5.png"
 							"doodads_on_6.png"
+							"doodads_on_7.png"
+							"doodads_on_8.png"
 						]
 						Size = [1, 1]
 						AnimationInterval = 0.125
