@@ -1,0 +1,43 @@
+Part : <base.txt>/Part
+{
+	NameKey = "CdRMoteer/Armory/Parts/ModularBridge/ControlDesk/Roofed"
+	IconNameKey = "CdRMoteer/Armory/Parts/ModularBridge/ControlDesk/RoofedIcon"
+	ID = cdrmoteer.armory.modular_bridge.basic_scanner.roofed
+	DescriptionKey = "CdRMoteer/Armory/Parts/ModularBridge/ControlDesk/RoofedDesc"
+	TypeCategories = [corridor, command, uses_power, modular_bridge_desk]
+	Components : ^/0/Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+		
+		RoofGraphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Roof
+			{
+				Layer = "roofs"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../base/roof.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../base/roof_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../base/roof_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+	}
+}

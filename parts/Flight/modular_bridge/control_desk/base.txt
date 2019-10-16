@@ -1,0 +1,227 @@
+Part : /BASE_PART
+{
+	EditorGroups = ["Flight", "CdRMoteerArmory"]
+	Cost = 4500
+	Size = [1, 1]
+	MaxHealth = 1000
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 1
+	IsWalled = false
+	GeneratorRequiresDoor = false
+	CreatePassableHolesWhenDestroyed = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		WallsBlend : <./Data/ships/terran/walls/walls.txt>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Mode = All
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		PartCrew
+		{
+			Type = ToggleProxy
+			PartLocation = [0, 1]
+			PartCriteria
+			{
+				Category = modular_bridge_seat
+				Rot = 0
+			}
+			ComponentID = PartCrew
+		}
+
+		BatteryStorage
+		{
+			Type = AmmoStorage
+			AmmoType = battery
+			MaxAmmo = 2000
+		}
+		BatteryConsumer
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/ControlRoom_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		PowerDrain
+		{
+			Type = AmmoConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 1000
+			MinFromQuantityForConversion = 1
+			Interval = 60// Drains 1 power every minute.
+		}
+
+		CommandProvider
+		{
+			Type = CommandProvider
+			OperationalToggle = IsOperational
+		}
+
+		Sensor
+		{
+			Type = Sensor
+			OperationalToggle = IsOperational
+			SightRadius = 50
+		}
+
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../base/floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../base/floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../base/floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on_1.png"
+							"doodads_on_2.png"
+							"doodads_on_3.png"
+							"doodads_on_4.png"
+							"doodads_on_5.png"
+							"doodads_on_6.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [0.5, 0.5]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "batteries_1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_2.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+				
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		BlueprintWalls : <./Data/ships/terran/walls/blueprint walls.txt>
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+	}
+
+	Stats
+	{
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxAmmo) / 1000
+		SensorRange = &~/Part/Components/Sensor/SightRadius
+
+		MinPower = &PowerUsageContinuous
+		RecPower = &PowerUsageContinuous
+		MinCrew = (&MinPower) * 2
+		RecCrew = (&RecPower) * 4
+	}
+}

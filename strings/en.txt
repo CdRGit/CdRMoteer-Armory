@@ -66,6 +66,28 @@ CdRMoteer
 				Deco = "Decorational (Windowed)"
 				DecoIcon = "Deco (Windowed)"
 				DecoDesc = "It's just a corridor, but with windows in the roof.\n\n'I can see a giant head staring at me' - Random crew member"
+				
+				ControlDesk
+				{
+					Windowed = "Control Desk (Windowed)"
+					WindowedIcon = "Control (Windowed)"
+					WindowedDesc = "A desk that allows crew to control the ship, now with windows!\n<bad>Disclaimer: The physical object, not the operating system</bad>\n\n'A sensor that allows me to see further than my hand would be nice' - Pilot"
+					
+					Roofed = "Control Desk (Roofed)"
+					RoofedIcon = "Control (Roofed)"
+					RoofedDesc = "A desk that allows crew to control the ship.\n\n'A sensor that allows me to see further than my hand would be nice' - Pilot"
+				}
+				
+				BasicChair
+				{
+					Windowed = "Basic Chair (Windowed)"
+					WindowedIcon = "Basic Chair (Windowed)"
+					WindowedDesc = "A chair that allows crew to interact with desks, now with windows!\n<bad>Disclaimer: The physical object, not the operating system</bad>\n\n'Why can't we just stand?' - Crew"
+					
+					Roofed = "Basic Chair (Roofed)"
+					RoofedIcon = "Basic Chair (Roofed)"
+					RoofedDesc = "A chair that allows crew to interact with desks.\n\n'Why can't we just stand?' - Crew"
+				}
 			}
 		}
 		

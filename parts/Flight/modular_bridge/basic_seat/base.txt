@@ -1,0 +1,159 @@
+Part : /BASE_PART
+{
+	EditorGroups = ["Flight", "CdRMoteerArmory"]
+	Cost = 500
+	Size = [1, 1]
+	MaxHealth = 1000
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 1
+	IsWalled = false
+	GeneratorRequiresDoor = false
+	CreatePassableHolesWhenDestroyed = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		WallsBlend : <./Data/ships/terran/walls/walls.txt>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [0.5, 0.125]
+			Rotation = 180d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
+			PrerequisitesBeforeCrewing = [BatteryStorage, PowerToggle]
+			CrewDestinations
+			[
+				[0.5, 0.125]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+		BatteryStorage
+		{
+			Type = ToggleProxy
+			PartLocation = [0, -1]
+			PartCriteria
+			{
+				Category = modular_bridge_desk
+				Rot = 0
+				Left = 0
+				Right = 1
+				Bottom = 0
+			}
+			ComponentID = BatteryStorage
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../base/floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../base/floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../base/floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "chair.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+				
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1.5, 1.5]
+					}
+				}
+			]
+		}
+
+		BlueprintWalls : <./Data/ships/terran/walls/blueprint walls.txt>
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		MinCrew = (&CrewRequired)
+		RecCrew = (&CrewRequired)
+	}
+}

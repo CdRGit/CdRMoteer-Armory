@@ -41,7 +41,7 @@ Part : /BASE_PART
 		{
 			Type = AmmoStorage
 			AmmoType = battery
-			MaxAmmo = 1000
+			MaxAmmo = 16000
 		}
 		BatteryConsumer
 		{

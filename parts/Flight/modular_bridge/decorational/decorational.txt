@@ -57,15 +57,15 @@ Part : /BASE_PART
 				DamageLevels
 				[
 					{
-						File = "floor.png"
+						File = "../base/floor.png"
 						Size = [1, 1]
 					}
 					{
-						File = "floor_33.png"
+						File = "../base/floor_33.png"
 						Size = [1, 1]
 					}
 					{
-						File = "floor_66.png"
+						File = "../base/floor_66.png"
 						Size = [1, 1]
 					}
 				]
