@@ -1,9 +1,9 @@
 Part : <base.txt>/Part
 {
-	NameKey = "CdRMoteer/Armory/Parts/ModularBridge/ControlDesk/Roofed"
-	IconNameKey = "CdRMoteer/Armory/Parts/ModularBridge/ControlDesk/RoofedIcon"
+	NameKey = "CdRMoteer/Armory/Parts/ModularBridge/BasicScannerDesk/Roofed"
+	IconNameKey = "CdRMoteer/Armory/Parts/ModularBridge/BasicScannerDesk/RoofedIcon"
 	ID = cdrmoteer.armory.modular_bridge.basic_scanner.roofed
-	DescriptionKey = "CdRMoteer/Armory/Parts/ModularBridge/ControlDesk/RoofedDesc"
+	DescriptionKey = "CdRMoteer/Armory/Parts/ModularBridge/BasicScannerDesk/RoofedDesc"
 	TypeCategories = [corridor, command, uses_power, modular_bridge_desk]
 	Components : ^/0/Components
 	{

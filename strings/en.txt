@@ -88,6 +88,17 @@ CdRMoteer
 					RoofedIcon = "Basic Chair (Roofed)"
 					RoofedDesc = "A chair that allows crew to interact with desks.\n\n'Why can't we just stand?' - Crew"
 				}
+				
+				BasicScannerDesk
+				{
+					Windowed = "Basic Scanner Desk (Windowed)"
+					WindowedIcon = "Basic Scanner (Windowed)"
+					WindowedDesc = "A desk that allows crew to see enemy ships from a greater distance, now with windows!\n<bad>Disclaimer: The physical object, not the operating system</bad>\n\n'Wait what do the red dots mean again?' - Sensor Crew"
+					
+					Roofed = "Basic Scanner Desk (Roofed)"
+					RoofedIcon = "Basic Scanner (Roofed)"
+					RoofedDesc = "A desk that allows crew to see enemy ships from a greater distance, now with windows!\n\n'Wait what do the red dots mean again?' - Sensor Crew"
+				}
 			}
 		}
 		
