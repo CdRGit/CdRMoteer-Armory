@@ -32,6 +32,8 @@ Parts
 		&<Flight/modular_bridge/basic_seat/roofed.txt>/Part
 		&<Flight/modular_bridge/basic_scanner_desk/windowed.txt>/Part
 		&<Flight/modular_bridge/basic_scanner_desk/roofed.txt>/Part
+		&<Flight/modular_bridge/standard_scanner_desk/windowed.txt>/Part
+		&<Flight/modular_bridge/standard_scanner_desk/roofed.txt>/Part
 	
 	// Crew
 	&<Crew/luxurious_crew_cabin/luxurious_crew_cabin.txt>/Part
