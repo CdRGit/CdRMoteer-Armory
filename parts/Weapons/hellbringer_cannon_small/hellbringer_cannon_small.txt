@@ -107,7 +107,7 @@ Part : /BASE_PART
 			AmmoType = cdrmoteer_bullet_clip
 			Storage = AmmoStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
-			ResupplyThreshold = 500
+			ResupplyThreshold = 5
 			OperationalToggle = PowerToggle
 			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
@@ -354,10 +354,10 @@ Part : /BASE_PART
 			Type = AmmoConverter
 			FromStorage = AmmoStorage
 			ToStorage = LoadedAmmo
-			FromQuantity = 10
-			ToQuantity = 10
+			FromQuantity = 1
+			ToQuantity = 1
 			DelayTrigger = Turret
-			DelayAfterTrigger = .1
+			DelayAfterTrigger = 1
 		}
 
 		LoadEffects

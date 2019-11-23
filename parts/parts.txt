@@ -3,16 +3,15 @@ Parts
 	// Weapons Energy
 	&<Weapons/electromagnetic_disruptor_field/electromagnetic_disruptor_field.txt>/Part
 	&<Weapons/electromagnetic_cannon/electromagnetic_cannon.txt>/Part
-	/*&<Weapons/heavy_anti_fighter_laser_cannon/heavy_anti_fighter_laser_cannon.txt>/Part*/
 	
 	// Weapons Projectiles
 	&<Weapons/hellbringer_cannon_small/hellbringer_cannon_small.txt>/Part
 	
 	// Weapons Missile
+	&<Weapons/advanced_missile_launcher/advanced_missile_launcher.txt>/Part
 	
 	// Factory
 	&<Misc/bullet_clip_factory/bullet_clip_factory.txt>/Part
-	//&<Misc/ftl_carrier_factory/ftl_carrier_factory.txt>/Part
 	
 	// Defenses
 	&<Defenses/repair_system_small/repair_system_small.txt>/Part
@@ -42,7 +41,6 @@ Parts
 	&<Crew/1_person_cabin/1_person_cabin.txt>/Part
 	
 	// Power
-	/*&<Power/advanced_generator_core/advanced_generator_core.txt>/Part*/
 	
 	// Misc
 ]
